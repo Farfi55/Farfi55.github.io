@@ -14,6 +14,11 @@
 	}
 
 	export let padding = 'px-1 py-0.5';
+	export let color = '';
+
+	if (color === '' && tecnology?.color) {
+		color = tecnology.color;
+	}
 </script>
 
 {#if tecnology}
@@ -25,7 +30,7 @@
 				<img
 					height="24"
 					width="24"
-					src="https://cdn.simpleicons.org/{tecnology.iconSlug}/"
+					src="https://cdn.simpleicons.org/{tecnology.iconSlug}/{color}"
 					alt={tecnology.name}
 					class="align-baseline"
 				/>

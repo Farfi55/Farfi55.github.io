@@ -26,10 +26,23 @@
 		<div
 			class="flex flex-col lg:justify-center text-center lg:col-span-2 lg:text-left gap-6 md:gap-8"
 		>
-			<h2 class="font-semibold text-4xl sm:text-5xl md:text-6xl">
+			<h2 class="font-semibold text-3xl sm:text-5xl">
 				Ciao! I'm <span class="poppins text-violet-400">Alessio</span> Farfaglia<br />
-				<span class="poppins text-violet-400">Software Engineer</span>
+				<span class="poppins text-violet-400">Computer Science</span> Student
 			</h2>
+
+			<p>
+				I'm a <span class="poppins text-violet-400">Computer Science</span> student at
+				<a href="https://www.unical.it/?lang=en" target="_blank" class="underline">
+					University of Calabria</a
+				>, Italy.
+				<br />
+				I'm passionate about
+				<span class="poppins text-violet-400" title="Game development">Game Dev</span>,
+				<span class="poppins text-violet-400" title="Web development">Web Dev</span>
+				and <span class="poppins text-violet-400" title="Artificial Intelligence">AI</span>.
+			</p>
+
 			<p class="text-base sm:text-lg md:text-xl">
 				My <span class="poppins text-violet-400">Favourite tech</span> includes:
 			</p>
@@ -47,38 +60,28 @@
 			<h3 class="font-semibold text-3xl sm:text-4xl md:text-5xl">
 				Curious to <span class="poppins text-violet-400">see</span> my work?
 			</h3>
-			<!-- <a
-				href="#"
-				class="mx-auto px-4 py-2 rounded-md border border-solid border-white flex items-center gap-2 -mb-4 sm:mb-0 mt-10 hover:border-violet-700 duration-200"
-			>
-				<i class="fa-regular fa-circle-play"></i>
-				<p class="text-base sm:text-lg md:text-xl">Watch the video</p>
-			</a> -->
 		</div>
 		<div class="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-10">
 			<Steps step={steps[0]}>
 				<p class="">
 					A <Tech name="Svelte" /> web app to create and manage your school timetable.<br />
-					Contains automatic timetable generation using
-					<Tech name="ASP">ASP</Tech>.
+					Contains automatic timetable generation using <Tech name="ASP" />.
 				</p>
 			</Steps>
 			<Steps step={steps[1]}>
 				<p>
-					3D <Tech name="Unity" /> game made for my bachelor's degree thesis, inspired by
+					{steps[1].name} is a 3D <Tech name="Unity" /> game made for my bachelor's degree thesis, inspired
+					by
 					<i>Overcooked</i>
 					and <i>PlateUp</i>.<br />
-					BOTs behaviour is implemented using
-					<Tech name="ASP">ASP</Tech>.
+					BOTs behaviour is implemented using <Tech name="ASP" />.
 				</p>
 			</Steps>
 			<Steps step={steps[2]}>
 				<p>
-					<Tech name="Unity" /> implementation of the
-					<i>Risk</i>
-					board game.<br />
-					BOTs behaviour is implemented using
-					<Tech name="ASP">ASP</Tech>.
+					{steps[2].name} is a <Tech name="Unity" /> implementation of the classic
+					<i>Risk</i> board game.<br />
+					BOTs behaviour is implemented using <Tech name="ASP" />.
 				</p>
 			</Steps>
 		</div>
@@ -88,5 +91,21 @@
 		>
 			<p class="text-base sm:text-lg md:text-xl">See more</p>
 		</a>
+	</section>
+
+	<section
+		id="about"
+		class="py-20 pt-10 lg:pt-16 lg:py-32 flex flex-col gap-16 sm:gap-20 md:gap-24 relative"
+	>
+		<div
+			class="flex flex-col gap-2 text-center relative py-4
+			before:absolute before:top-0 before:left-0 before:w-2/3 before:h-1.5 before:bg-violet-700 before:rounded
+			after:absolute after:bottom-0 after:right-0 after:w-2/3 after:h-1.5 after:bg-violet-700 after:rounded"
+		>
+			<h6 class="text-lg sm:text-xl md:text-xl">Want to know more?</h6>
+			<h3 class="font-semibold text-3xl sm:text-4xl md:text-5xl">
+				A bit <span class="poppins text-violet-400">about</span> me.
+			</h3>
+		</div>
 	</section>
 </main>

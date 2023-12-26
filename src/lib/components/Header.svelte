@@ -3,7 +3,7 @@
 
 	let tabs = [
 		{
-			href: '#',
+			href: '#about',
 			text: 'About me'
 		},
 		{
