@@ -1,5 +1,7 @@
 <script lang="ts">
-	export let step: { name: string; icon: string; href: string; description: string };
+	import type { Step } from '../../app';
+
+	export let step: Step;
 </script>
 
 <a
@@ -16,7 +18,6 @@
 	<h3 class="font-medium text-xl sm:text-2xl md:text-3xl">
 		{step.name}
 	</h3>
-	{@html step.description}
 	<slot />
 	<div class="flex-1 flex justify-between gap-4 items-center">
 		<div
