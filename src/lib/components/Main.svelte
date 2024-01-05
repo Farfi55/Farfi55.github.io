@@ -19,6 +19,24 @@
 			icon: 'fa-solid fa-earth-europe'
 		}
 	];
+
+	let benefits = [
+		{
+			name: 'a passionate nerd',
+			description:
+				"I'm a nerd at the very core, I love programming and building interactive experiences, let it be a game or a website, I'm always up for it.<br>I love learning new things and experimenting with new technologies, for example this website is built using SvelteKit, which I'm learning right now."
+		},
+		{
+			name: 'a problem solver',
+			description:
+				"from the high school problem solving competitions, to building enterprise level applications my role was always to analyze the problem at hand and solving it in a fast and sensible way.<br>Over the years I've gained experience in many different fields of computer science, from web development to game development, from AI to databases. I'm always up for a challenge and the next problem to solve."
+		},
+		{
+			name: 'An Artificial Intelligence Student',
+			description:
+				'At the University of Calabria, I learned to build Artificial Intelligence agents using Answer Set Programming (ASP) from the most brilliant minds in the field.'
+		}
+	];
 </script>
 
 <main class="flex flex-col flex-1 p-4">
@@ -95,10 +113,10 @@
 
 	<section
 		id="about"
-		class="py-20 pt-10 lg:pt-16 lg:py-32 flex flex-col gap-16 sm:gap-20 md:gap-24 relative"
+		class="py-20 pt-10 lg:pt-16 lg:py-32 flex flex-col gap-10 sm:gap-16 md:gap-16 relative"
 	>
 		<div
-			class="flex flex-col gap-2 text-center relative py-4
+			class="flex flex-col gap-2 text-center relative py-6
 			before:absolute before:top-0 before:left-0 before:w-2/3 before:h-1.5 before:bg-violet-700 before:rounded
 			after:absolute after:bottom-0 after:right-0 after:w-2/3 after:h-1.5 after:bg-violet-700 after:rounded"
 		>
@@ -106,6 +124,25 @@
 			<h3 class="font-semibold text-3xl sm:text-4xl md:text-5xl">
 				A bit <span class="poppins text-violet-400">about</span> me.
 			</h3>
+		</div>
+
+		<p class="mx-auto poppins font-semibold text-lg sm:text-xl md:text-2xl">I am . . .</p>
+		<div class="flex flex-col gap-20 w-full mx-auto max-w-[800px] text-start">
+			{#each benefits as benefit, index}
+				<div class="flex gap-6 sm:gap-8">
+					<p class="poppins text-4xl sm:text-5xl md:text-6xl text-slate-500">
+						0{index + 1}
+					</p>
+					<div class="flex flex-col gap-6 sm:gap-8">
+						<h3 class="text-2xl sm:text-3xl md:text-5xl">
+							{benefit.name}
+						</h3>
+						<p class="text-base">
+							{@html benefit.description}
+						</p>
+					</div>
+				</div>
+			{/each}
 		</div>
 	</section>
 </main>
