@@ -1,7 +1,4 @@
-import type { Tecnology } from "../app";
-
-
-
+import type { Tecnology } from '../app';
 
 export const tecnologies: Tecnology[] = [
 	{
@@ -97,8 +94,7 @@ export const tecnologies: Tecnology[] = [
 ];
 
 const tecnologiesMap: Map<string, Tecnology> = new Map();
-tecnologies.forEach(t => tecnologiesMap.set(t.name, t));
-
+tecnologies.forEach((t) => tecnologiesMap.set(t.name, t));
 
 export function getTecnology(name: string): Tecnology {
 	const tecnology = tecnologiesMap.get(name);
@@ -106,5 +102,4 @@ export function getTecnology(name: string): Tecnology {
 
 	console.warn(`Tecnology ${name} not found, returning default`);
 	return { name: name.toString(), urlSlug: name.toString().toLowerCase() };
-};
-
+}

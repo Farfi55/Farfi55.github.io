@@ -9,11 +9,19 @@ declare global {
 	}
 }
 
-export interface Step { name: string; icon: string; href?: string; description?: string }
-export interface Tecnology { name: string; urlSlug: string, iconSlug?: string; website?: string; title?: string; color?: string; }
+export interface Step {
+	name: string;
+	icon: string;
+	href?: string;
+	description?: string;
+}
+export interface Tecnology {
+	name: string;
+	urlSlug: string;
+	iconSlug?: string;
+	website?: string;
+	title?: string;
+	color?: string;
+}
 
-
-export {
-
-
-};
+export {};
