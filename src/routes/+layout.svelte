@@ -20,7 +20,7 @@
 	>
 		<button
 			on:click={goTop}
-			class="ml-auto rounded-full bg-slate-900 text-violet-400 py-2 sm:py-3 px-3 sm:px-4 hover:bg-slate-800 cursor-pointer"
+			class="ml-auto rounded-full bg-slate-900 text-violet py-2 sm:py-3 px-3 sm:px-4 hover:bg-slate-800 cursor-pointer"
 			title="Go to top"
 			aria-label="Go to top"
 		>

@@ -17,6 +17,18 @@ h3,
 	font-family: 'Poppins', sans-serif;
 }
 
-.blueShadow {
+.blue-shadow {
 	box-shadow: 0px 4px 55px rgba(108, 40, 217, 0.255);
+}
+
+.text-violet {
+	@apply text-violet-700 dark:text-violet-400;
+}
+
+.text-normal {
+	@apply text-black dark:text-white;
+}
+
+.bg-body {
+	@apply bg-slate-50 dark:bg-slate-950;
 }

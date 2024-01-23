@@ -14,6 +14,24 @@ export const tecnologies: Tecnology[] = [
 		website: 'https://svelte.dev/'
 	},
 	{
+		name: 'Python',
+		urlSlug: 'python',
+		iconSlug: 'python',
+		website: 'https://www.python.org/'
+	},
+	{
+		name: 'C#',
+		urlSlug: 'csharp',
+		iconSlug: 'csharp',
+		website: 'https://docs.microsoft.com/en-us/dotnet/csharp/'
+	},
+	{
+		name: 'TypeScript',
+		urlSlug: 'typescript',
+		iconSlug: 'typescript',
+		website: 'https://www.typescriptlang.org/'
+	},
+	{
 		name: 'Angular',
 		urlSlug: 'angular',
 		iconSlug: 'angular',
@@ -43,24 +61,6 @@ export const tecnologies: Tecnology[] = [
 		urlSlug: 'tailwind',
 		iconSlug: 'tailwindcss',
 		website: 'https://tailwindcss.com/'
-	},
-	{
-		name: 'Python',
-		urlSlug: 'python',
-		iconSlug: 'python',
-		website: 'https://www.python.org/'
-	},
-	{
-		name: 'C#',
-		urlSlug: 'csharp',
-		iconSlug: 'csharp',
-		website: 'https://docs.microsoft.com/en-us/dotnet/csharp/'
-	},
-	{
-		name: 'TypeScript',
-		urlSlug: 'typescript',
-		iconSlug: 'typescript',
-		website: 'https://www.typescriptlang.org/'
 	},
 	{
 		name: 'Java',

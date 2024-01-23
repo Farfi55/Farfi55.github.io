@@ -24,7 +24,7 @@
 {#if tecnology}
 	<a href={tecnology.website ?? '#'} target={openNewTab ? '_blank' : '_self'} class="inline-block">
 		<div
-			class="flex {padding} gap-2 bg-slate-800 text-white rounded-md border-b-2 border-slate-900 hover:border-slate-700 hover:translate-y-1 duration-100 align-baseline"
+			class="flex {padding} gap-2 bg-slate-100 text-normal dark:bg-slate-800 dark:text-white rounded-md border-b-2 border-slate-300 hover:bg-slate-200 dark:border-slate-900 dark:hover:border-slate-700 hover:translate-y-1 duration-100 align-baseline drop-shadow-sm"
 		>
 			{#if tecnology.iconSlug}
 				<img
