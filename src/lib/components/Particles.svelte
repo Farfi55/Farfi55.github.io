@@ -1,39 +1,43 @@
-<script>
+<script lang="ts">
+	import { browser } from '$app/environment';
 	import { onDestroy, onMount } from 'svelte';
 
 	let colorScheme = 'dark';
 	let loaded = false;
 
-	const prefersLight = window.matchMedia('(prefers-color-scheme: light)');
+	if (browser) {
+		let prefersLightMode = window?.matchMedia('(prefers-color-scheme: light)');
+		console.log(prefersLightMode.media);
 
-	onMount(() => {
-		prefersLight.addEventListener('change', UpdateParticlesOnColorSchemeChange);
+		onMount(() => {
+			prefersLightMode.addEventListener('change', UpdateParticlesOnColorSchemeChange);
 
-		colorScheme = prefersLight.matches ? 'light' : 'dark';
+			colorScheme = prefersLightMode.matches ? 'light' : 'dark';
 
-		loadParticles();
-	});
+			loadParticles();
+		});
 
-	const UpdateParticlesOnColorSchemeChange = () => {
-		colorScheme = prefersLight.matches ? 'light' : 'dark';
-		loadParticles();
-	};
+		const UpdateParticlesOnColorSchemeChange = () => {
+			colorScheme = prefersLightMode.matches ? 'light' : 'dark';
+			loadParticles();
+		};
 
-	function loadParticles() {
-		let particlesConfig = 'assets/particles.json';
-		if (colorScheme === 'light') {
-			particlesConfig = 'assets/particles-light.json';
+		function loadParticles() {
+			let particlesConfig = 'assets/particles.json';
+			if (colorScheme === 'light') {
+				particlesConfig = 'assets/particles-light.json';
+			}
+			// @ts-ignore
+			particlesJS.load('particles-js', particlesConfig, function () {
+				loaded = true;
+				console.log('callback - particles.js config loaded', colorScheme);
+			});
 		}
-		// @ts-ignore
-		particlesJS.load('particles-js', particlesConfig, function () {
-			loaded = true;
-			console.log('callback - particles.js config loaded', colorScheme);
+
+		onDestroy(() => {
+			prefersLightMode.removeEventListener('change', UpdateParticlesOnColorSchemeChange);
 		});
 	}
-
-	onDestroy(() => {
-		prefersLight.removeEventListener('change', UpdateParticlesOnColorSchemeChange);
-	});
 </script>
 
 <svelte:head>
@@ -46,7 +50,7 @@
 </svelte:head>
 
 <div
-	class="absolute min-h-screen top-0 left-0 w-full z-[-1] duration-500 {loaded
+	class="absolute min-h-screen top-0 left-0 w-full z-[-1] duration-500 bg-gradient-to-b {loaded
 		? 'opacity-70'
 		: 'opacity-0'}"
 >

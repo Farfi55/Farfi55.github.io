@@ -47,24 +47,24 @@
 			class="flex flex-col lg:justify-center text-center lg:col-span-2 lg:text-left gap-6 md:gap-8"
 		>
 			<h2 class="font-semibold text-3xl sm:text-5xl">
-				Ciao! I'm <span class="poppins text-violet">Alessio</span> Farfaglia<br />
-				<span class="poppins text-violet">Computer Science</span> Student
+				Ciao! I'm <span class="poppins text-main">Alessio</span> Farfaglia<br />
+				<!-- <span class="poppins text-main">Computer Science</span> Student -->
 			</h2>
 
 			<p>
-				I'm a <span class="poppins text-violet">Computer Science</span> student at
+				I'm a <span class="poppins text-main">Computer Science</span> student at
 				<a href="https://www.unical.it/?lang=en" target="_blank" class="underline">
 					University of Calabria</a
 				>, Italy.
 				<br />
 				I'm passionate about
-				<span class="poppins text-violet" title="Game development">Game Dev</span>,
-				<span class="poppins text-violet" title="Web development">Web Dev</span>
-				and <span class="poppins text-violet" title="Artificial Intelligence">AI</span>.
+				<span class="poppins text-main" title="Game development">Game Dev</span>,
+				<span class="poppins text-main" title="Web development">Web Dev</span>
+				and <span class="poppins text-main" title="Artificial Intelligence">AI</span>.
 			</p>
 
 			<p class="text-base sm:text-lg md:text-xl">
-				My <span class="poppins text-violet">Favourite tech</span> includes:
+				My <span class="poppins text-main">Favourite tech</span> includes:
 			</p>
 			<ul class="flex flex-wrap justify-center lg:justify-start gap-4">
 				{#each tecnologies as tecnology}
@@ -78,7 +78,7 @@
 		<div class="flex flex-col gap-2 text-center">
 			<h6 class="text-lg sm:text-xl md:text-2xl">A few of my projects</h6>
 			<h3 class="font-semibold text-3xl sm:text-4xl md:text-5xl">
-				Curious to <span class="poppins text-violet">see</span> my work?
+				Curious to <span class="poppins text-main">see</span> my work?
 			</h3>
 		</div>
 		<div class="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-10">
@@ -107,7 +107,7 @@
 		</div>
 		<a
 			href="#"
-			class="mx-auto px-4 py-1 rounded-md border border-solid border-black dark:border-white flex items-center hover:border-violet-700 hover:text-violet-700 -mt-16 duration-200"
+			class="mx-auto px-4 py-1 rounded-md border border-solid border-black dark:border-white flex items-center hover:border-amber-700 hover:text-amber-700 -mt-16 duration-200"
 		>
 			<p class="text-base sm:text-lg md:text-xl">See more</p>
 		</a>
@@ -119,12 +119,12 @@
 	>
 		<div
 			class="flex flex-col gap-2 text-center relative py-6
-			before:absolute before:top-0 before:left-0 before:w-2/3 before:h-1.5 before:bg-violet-700 before:rounded
-			after:absolute after:bottom-0 after:right-0 after:w-2/3 after:h-1.5 after:bg-violet-700 after:rounded"
+			before:absolute before:top-0 before:left-0 before:w-2/3 before:h-1.5 before:bg-amber-700 before:rounded
+			after:absolute after:bottom-0 after:right-0 after:w-2/3 after:h-1.5 after:bg-amber-700 after:rounded"
 		>
 			<h6 class="text-lg sm:text-xl md:text-xl">Want to know more?</h6>
 			<h3 class="font-semibold text-3xl sm:text-4xl md:text-5xl">
-				A bit <span class="poppins text-violet">about</span> me.
+				A bit <span class="poppins text-main">about</span> me.
 			</h3>
 		</div>
 
@@ -132,7 +132,7 @@
 		<div class="flex flex-col gap-20 w-full mx-auto max-w-[800px] text-start">
 			{#each benefits as benefit, index}
 				<div class="flex gap-6 sm:gap-8">
-					<p class="poppins text-4xl sm:text-5xl md:text-6xl text-slate-500">
+					<p class="poppins text-4xl sm:text-5xl md:text-6xl text-stone-500">
 						0{index + 1}
 					</p>
 					<div class="flex flex-col gap-6 sm:gap-8">
