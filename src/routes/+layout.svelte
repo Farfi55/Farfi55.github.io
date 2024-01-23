@@ -1,6 +1,7 @@
 <script lang="ts">
 	import Footer from '$lib/components/Footer.svelte';
 	import Header from '$lib/components/Header.svelte';
+	import '../app.css';
 
 	let y: number;
 
@@ -13,7 +14,7 @@
 	}
 </script>
 
-<div class="relative flex flex-col max-w-[1440px] mx-auto w-full text-sm sm:text-base min-h-screen">
+<div class="relative flex flex-col mx-auto w-full text-sm sm:text-base min-h-screen">
 	<!-- <div
 		class={'fixed bottom-0 w-full duration-200 flex p-10 z-10 ' +
 			(y > 0 ? 'opacity-100 pointer-events-auto' : ' pointer-events-none opacity-0')}

@@ -3,12 +3,12 @@
 
 	let tabs = [
 		{
-			href: '#projects',
+			href: '/projects',
 			text: 'Projects'
 		},
 		{
-			href: '#about',
-			text: 'About me'
+			href: '/blog',
+			text: 'Blog'
 		}
 	];
 </script>
@@ -20,7 +20,7 @@
 			: 'py-6 border-none border-transparent  ')}
 >
 	<h1 class="font-medium">
-		<b class="font-bold poppins">Alessio</b> Farfaglia
+		<a href="/"><b class="font-bold poppins">Alessio</b> Farfaglia</a>
 	</h1>
 	<div class="hidden sm:flex items-center gap-4">
 		{#each tabs as tab}
@@ -32,8 +32,7 @@
 
 	<a
 		class="shadow-amber-600/10 shadow-xl relative overflow-hidden px-5 py-2 group rounded-full dark:text-white dark:bg-amber-700 text-black bg-amber-400"
-		href="#"
-		target="_blank"
+		href="/contact"
 	>
 		<div
 			class="absolute top-0 right-full w-full h-full bg-amber-500 opacity-50 group-hover:transtone-x-full z-0 duration-200"
