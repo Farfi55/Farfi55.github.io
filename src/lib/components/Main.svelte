@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { tecnologies } from '$lib/Tecnologies';
 	import type { Step } from '../../app';
+	import Button from './Button.svelte';
 	import Particles from './Particles.svelte';
 	import Steps from './Steps.svelte';
 	import Tech from './Tech.svelte';
@@ -34,7 +35,7 @@
 		{
 			name: 'An Artificial Intelligence Student',
 			description:
-				'At the University of Calabria, I learned to build Artificial Intelligence agents using Answer Set Programming (ASP) from the most brilliant minds in the field.'
+				"At the University of Calabria, I learned to build Artificial Intelligence agents using Answer Set Programming (ASP) from the most brilliant minds in the field. And I've used this knowledge to build a few projects, like School Timetable and CookedUp."
 		}
 	];
 </script>
@@ -105,12 +106,15 @@
 				</p>
 			</Steps>
 		</div>
-		<a
+		<!-- <a
 			href="#"
-			class="mx-auto px-4 py-1 rounded-md border border-solid border-black dark:border-white flex items-center hover:border-amber-700 hover:text-amber-700 -mt-16 duration-200"
+			class="mx-auto px-4 py-1 rounded-md border border-solid border-black dark:border-white flex items-center link-main link-main-border -mt-16 duration-200"
 		>
 			<p class="text-base sm:text-lg md:text-xl">See more</p>
-		</a>
+		</a> -->
+		<div class="flex items-center justify-center">
+			<Button href="/projects">See more</Button>
+		</div>
 	</section>
 
 	<section
@@ -119,8 +123,8 @@
 	>
 		<div
 			class="flex flex-col gap-2 text-center relative py-6
-			before:absolute before:top-0 before:left-0 before:w-2/3 before:h-1.5 before:bg-amber-700 before:rounded
-			after:absolute after:bottom-0 after:right-0 after:w-2/3 after:h-1.5 after:bg-amber-700 after:rounded"
+			before:absolute before:top-0 before:left-0 before:w-2/3 before:h-1.5 before:bg-amber-600 dark:before:bg-amber-700 before:rounded
+			after:absolute after:bottom-0 after:right-0 after:w-2/3 after:h-1.5 after:bg-amber-600 dark:after:bg-amber-700 after:rounded"
 		>
 			<h6 class="text-lg sm:text-xl md:text-xl">Want to know more?</h6>
 			<h3 class="font-semibold text-3xl sm:text-4xl md:text-5xl">
@@ -147,4 +151,7 @@
 			{/each}
 		</div>
 	</section>
+	<div class="flex items-center justify-center mb-20">
+		<Button href="/contact">Get in touch</Button>
+	</div>
 </main>

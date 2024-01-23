@@ -3,7 +3,7 @@
 </script>
 
 <footer
-	class="py-10 sm:py-12 bg-amber-100 dark:bg-stone-900 border-t border-solid border-amber-400 dark:border-amber-900 flex flex-col gap-4 sm:gap-8 justify-center items-center z-20"
+	class="py-10 sm:py-12 bg-stone-700 text-white dark:bg-stone-900 border-t-2 border-solid border-amber-700 dark:border-amber-900 flex flex-col gap-4 sm:gap-8 justify-center items-center z-20"
 >
 	<!-- <p class="px-4 py-2 bg-white text-stone-950 font-medium">Connect with me &darr;</p> -->
 	<div class="flex flex-col w-100 gap-4 items-start justify-center">

@@ -28,3 +28,11 @@ h3,
 .bg-body {
 	@apply bg-stone-50 dark:bg-stone-950;
 }
+
+.link-main {
+	@apply duration-200 hover:text-amber-600 hover:dark:text-amber-700;
+}
+
+.link-main-border {
+	@apply hover:border-amber-600 dark:hover:border-amber-700
+}
