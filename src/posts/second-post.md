@@ -8,12 +8,9 @@ tags:
 published: true
 ---
 
-
 ## svelte
 
-Media inside the **static** folder can be served from '/'.
-
-![Svelte](favicon.png)
+ignore this blog post as it is just a test
 
 can i have some `rust` code?
 
