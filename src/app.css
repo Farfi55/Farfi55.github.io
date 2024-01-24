@@ -22,7 +22,11 @@ h3,
 }
 
 .text-normal {
-	@apply text-black dark:text-white;
+	@apply text-stone-900 dark:text-stone-200;
+}
+
+.text-muted {
+	@apply text-stone-600 dark:text-stone-400;
 }
 
 .bg-body {
@@ -35,4 +39,9 @@ h3,
 
 .link-main-border {
 	@apply hover:border-amber-600 dark:hover:border-amber-700
+}
+
+
+pre {
+	font-family: 'Fire Code', monospace;
 }

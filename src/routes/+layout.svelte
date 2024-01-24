@@ -20,7 +20,7 @@
 	<Footer />
 
 	<div
-		class="fixed bottom-0 mb-4 right-0 mr-4 z-1 duration-200 {y > 0
+		class="fixed bottom-0 mb-4 right-0 mr-4 {y > 0
 			? 'flex pointer-events-auto'
 			: 'hidden pointer-events-none '}"
 	>

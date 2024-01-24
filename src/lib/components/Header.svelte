@@ -21,6 +21,8 @@
 			? 'py-4 text-white bg-stone-700 dark:bg-stone-900 border-amber-700 dark:border-amber-900'
 			: 'py-6 border-none border-transparent  ')}
 >
+	<!-- TODO: amburger menu for mobile -->
+
 	<h1 class="font-medium">
 		<a href="/" class="link-main duration-200"><b class="font-bold poppins">Alessio</b> Farfaglia</a
 		>

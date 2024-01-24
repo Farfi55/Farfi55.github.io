@@ -56,7 +56,7 @@
 				I'm a <span class="poppins text-main">Computer Science</span> student at
 				<a href="https://www.unical.it/?lang=en" target="_blank" class="underline">
 					University of Calabria</a
-				>, Italy.
+				>, Italy 🇮🇹.
 				<br />
 				I'm passionate about
 				<span class="poppins text-main" title="Game development">Game Dev</span>,

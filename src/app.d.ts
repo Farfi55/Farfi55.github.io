@@ -1,4 +1,7 @@
 // See https://kit.svelte.dev/docs/types#app
+
+import type { tecnologies } from "$lib/Tecnologies";
+
 // for information about these interfaces
 declare global {
 	namespace App {
@@ -24,4 +27,13 @@ export interface Tecnology {
 	color?: string;
 }
 
-export {};
+export type Post = {
+	title: string;
+	slug: string;
+	description: string;
+	date: string;
+	tags: string[];
+	published: boolean;
+}
+
+export { };

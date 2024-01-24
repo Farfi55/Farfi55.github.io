@@ -15,7 +15,7 @@
 		<i class={step.icon}></i>
 	</div>
 
-	<h3 class="font-medium text-xl sm:text-2xl md:text-3xl">
+	<h3 class="font-medium text-xl sm:text-2xl md:text-3xl text-main">
 		{step.name}
 	</h3>
 	<slot />
