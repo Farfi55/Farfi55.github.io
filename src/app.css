@@ -30,7 +30,7 @@ h3,
 }
 
 .link-main {
-	@apply duration-200 hover:text-amber-600 hover:dark:text-amber-700;
+	@apply hover:text-amber-600 hover:dark:text-amber-700;
 }
 
 .link-main-border {

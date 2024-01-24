@@ -15,23 +15,25 @@
 </script>
 
 <div class="relative flex flex-col mx-auto w-full text-sm sm:text-base min-h-screen">
-	<!-- <div
-		class={'fixed bottom-0 w-full duration-200 flex p-10 z-10 ' +
-			(y > 0 ? 'opacity-100 pointer-events-auto' : ' pointer-events-none opacity-0')}
-	>
-		<button
-			on:click={goTop}
-			class="ml-auto rounded-full bg-stone-900 text-main py-2 sm:py-3 px-3 sm:px-4 hover:bg-stone-800 cursor-pointer"
-			title="Go to top"
-			aria-label="Go to top"
-		>
-			<i class="fa-solid fa-arrow-up grid place-items-center aspect-square"></i>
-		</button>
-	</div> -->
-
 	<Header {y} />
 	<slot />
 	<Footer />
+
+	<div
+		class="fixed bottom-0 mb-4 right-0 mr-4 z-1 duration-200 {y > 0
+			? 'flex pointer-events-auto'
+			: 'hidden pointer-events-none '}"
+	>
+		<button
+			class="link-main bg-stone-900 border border-stone-600 text-stone-600 hover:border-amber-700 rounded-full d-flex flex-items-center flex-justify-center"
+			style="width: 40px; height: 40px;"
+			title="Go to top"
+			aria-label="Scroll to top"
+			on:click={goTop}
+		>
+			<i class="fa-solid fa-arrow-up"></i>
+		</button>
+	</div>
 </div>
 
 <svelte:window bind:scrollY={y} bind:innerHeight bind:innerWidth />

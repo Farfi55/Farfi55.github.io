@@ -108,7 +108,7 @@
 		</div>
 		<!-- <a
 			href="#"
-			class="mx-auto px-4 py-1 rounded-md border border-solid border-black dark:border-white flex items-center link-main link-main-border -mt-16 duration-200"
+			class="mx-auto px-4 py-1 rounded-md border border-solid border-black dark:border-white flex items-center link-main duration-200 link-main-border -mt-16 duration-200"
 		>
 			<p class="text-base sm:text-lg md:text-xl">See more</p>
 		</a> -->
