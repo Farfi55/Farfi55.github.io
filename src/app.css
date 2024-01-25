@@ -41,13 +41,10 @@ h3,
 	@apply hover:border-amber-600 dark:hover:border-amber-700
 }
 
-.fira {
-	font-family: 'Fira Code', monospace;
-}
 
 code,
 .line>span {
-	font-family: 'Fira Code', monospace;
+	@apply font-mono;
 }
 
 :not(pre)>code {
@@ -56,4 +53,5 @@ code,
 
 pre {
 	@apply my-4 px-4 py-2 rounded-lg;
+	@apply shadow-md shadow-stone-900/30 dark:shadow-none;
 }

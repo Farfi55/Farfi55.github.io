@@ -68,8 +68,10 @@
 				My <span class="poppins text-main">Favourite tech</span> includes:
 			</p>
 			<ul class="flex flex-wrap justify-center lg:justify-start gap-4">
-				{#each tecnologies as tecnology}
-					<Tech {tecnology} padding="px-1.5 py-1" />
+				{#each tecnologies as tecnology (tecnology.name)}
+					{#if !tecnology.hide}
+						<Tech {tecnology} padding="px-1.5 py-1" />
+					{/if}
 				{/each}
 			</ul>
 		</div>

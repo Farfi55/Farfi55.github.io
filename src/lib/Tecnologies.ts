@@ -14,6 +14,12 @@ export const tecnologies: Tecnology[] = [
 		website: 'https://svelte.dev/'
 	},
 	{
+		name: 'ASP',
+		urlSlug: 'asp',
+		title: 'Answer Set Programming',
+		website: 'https://en.wikipedia.org/wiki/Answer_set_programming'
+	},
+	{
 		name: 'Python',
 		urlSlug: 'python',
 		iconSlug: 'python',
@@ -32,18 +38,34 @@ export const tecnologies: Tecnology[] = [
 		website: 'https://www.typescriptlang.org/'
 	},
 	{
+		name: 'JavaScript',
+		urlSlug: 'javascript',
+		iconSlug: 'javascript',
+		website: 'https://www.javascript.com/',
+		hide: true
+	},
+	{
+		name: 'CSS',
+		urlSlug: 'css',
+		iconSlug: 'css3',
+		website: 'https://www.w3.org/Style/CSS/',
+		hide: true
+	},
+	{
+		name: 'HTML',
+		urlSlug: 'html',
+		iconSlug: 'html5',
+		website: 'https://html.spec.whatwg.org/',
+		hide: true
+	},
+	{
 		name: 'Angular',
 		urlSlug: 'angular',
 		iconSlug: 'angular',
 		color: 'c3002f',
 		website: 'https://angular.io/'
 	},
-	{
-		name: 'ASP',
-		urlSlug: 'asp',
-		title: 'Answer Set Programming',
-		website: 'https://en.wikipedia.org/wiki/Answer_set_programming'
-	},
+
 	{
 		name: 'Spring',
 		urlSlug: 'spring',

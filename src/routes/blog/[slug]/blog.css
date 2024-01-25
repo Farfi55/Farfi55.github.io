@@ -1,0 +1,7 @@
+ul {
+	@apply ms-3 list-disc list-inside;
+}
+
+#table-of-contents {
+	@apply my-4;
+}

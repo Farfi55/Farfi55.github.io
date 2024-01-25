@@ -25,10 +25,12 @@ export interface Tecnology {
 	website?: string;
 	title?: string;
 	color?: string;
+	hide?: boolean;
 }
 
 export type Post = {
 	title: string;
+	subtitle?: string;
 	slug: string;
 	description: string;
 	date: string;
