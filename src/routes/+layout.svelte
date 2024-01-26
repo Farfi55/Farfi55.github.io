@@ -2,12 +2,15 @@
 	import Footer from '$lib/components/Footer.svelte';
 	import Header from '$lib/components/Header.svelte';
 	import '../app.css';
+	import PageTransition from './PageTransition.svelte';
 
 	let y: number;
 
 	let innerHeight: number;
 
 	let innerWidth: number;
+
+	export let data;
 
 	function goTop() {
 		window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -16,7 +19,10 @@
 
 <div class="relative flex flex-col mx-auto w-full text-sm sm:text-base min-h-screen">
 	<Header {y} />
-	<slot />
+
+	<PageTransition url={data.url}>
+		<slot />
+	</PageTransition>
 	<Footer />
 
 	<div

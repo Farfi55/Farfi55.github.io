@@ -1,5 +1,6 @@
 <script lang="ts">
 	import Button from './Button.svelte';
+	import ThemeSelector from './ThemeSelector.svelte';
 
 	export let y: number;
 
@@ -35,5 +36,12 @@
 		{/each}
 	</div>
 
-	<Button href="/contact">Get in touch</Button>
+	<div class="flex gap-2">
+		<div class="">
+			<Button href="/contact">Get in touch</Button>
+		</div>
+		<div class="flex items-center">
+			<ThemeSelector />
+		</div>
+	</div>
 </header>

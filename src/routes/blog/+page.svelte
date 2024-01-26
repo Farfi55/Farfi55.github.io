@@ -11,7 +11,7 @@
 <section>
 	<ul class="p-4 grid grid-cols items-center">
 		{#each data.posts as post, index}
-			<li class="">
+			<li class="p-4 bg-stone-200 dark:bg-stone-900 rounded-lg">
 				<a href="blog/{post.slug}">
 					<h2 class="text-main hover:underline capitalize text-2xl sm:text-3xl md:text-4xl">
 						{post.title}
@@ -21,7 +21,7 @@
 				<p>{post.description}</p>
 			</li>
 			{#if index !== data.posts.length - 1}
-				<hr class="my-12 mx-8 border-stone-600 dark:border-stone-900" />
+				<hr class="my-12 mx-8 border-stone-600 dark:border-stone-700" />
 			{/if}
 		{/each}
 	</ul>

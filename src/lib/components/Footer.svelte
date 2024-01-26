@@ -12,7 +12,9 @@
 				<i class="fa-solid fa-envelope" />
 				Email:
 			</span>
-			<span class="ps-2 poppins text-main">alessio.farfaglia@gmail.com</span>
+			<span class="ps-2 poppins text-main">
+				<a href="mailto:alessio.farfaglia@gmail.com"> alessio.farfaglia@gmail.com </a>
+			</span>
 		</div>
 		<div class="flex flex-row w-100">
 			<span class="min-w-[90px]">
