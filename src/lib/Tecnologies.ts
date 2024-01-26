@@ -119,7 +119,7 @@ const tecnologiesMap: Map<string, Tecnology> = new Map();
 tecnologies.forEach((t) => tecnologiesMap.set(t.name.toLowerCase(), t));
 
 export function getTecnology(name: string): Tecnology {
-	const tecnology = tecnologiesMap.get(name);
+	const tecnology = tecnologiesMap.get(name.toLowerCase());
 	if (tecnology) return tecnology;
 
 	console.warn(`Tecnology ${name} not found, returning default`);

@@ -1,7 +1,6 @@
 <script lang="ts">
 	import * as config from '$lib/config';
 	import { formatDate } from '$lib/utils';
-	import { getTecnology } from '$lib/Tecnologies';
 	import Tech from '$lib/components/Tech.svelte';
 	import './blog.css';
 	export let data;
@@ -34,7 +33,7 @@
 		<div class="flex gap-2">
 			<span>Tags:</span>
 			{#each data.meta.tags as tag}
-				<Tech tecnology={getTecnology(tag)}></Tech>
+				<Tech name={tag}></Tech>
 			{/each}
 		</div>
 
