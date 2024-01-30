@@ -1,6 +1,5 @@
 <script lang="ts">
-	import type { Step } from '../../app';
-
+	import type { Step } from '$lib/types';
 	export let step: Step;
 </script>
 

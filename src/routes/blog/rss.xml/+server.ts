@@ -1,5 +1,5 @@
 import * as config from '$lib/config'
-import type { Post } from '../../../app.js'
+import type { Post } from "$lib/types.js"
 
 export const prerender = true
 

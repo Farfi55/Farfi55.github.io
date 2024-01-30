@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { tecnologies } from '$lib/Tecnologies';
-	import type { Step } from '../../app';
+	import type { Step } from '$lib/types';
 	import Button from './Button.svelte';
 	import Particles from './Particles.svelte';
 	import Steps from './Steps.svelte';

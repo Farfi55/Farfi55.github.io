@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { getTecnology } from '$lib/Tecnologies';
-	import type { Tecnology } from '../../app';
-
+	import type { Tecnology } from '$lib/types';
 	export let openNewTab: boolean = true;
 
 	export let name: string | null = null;

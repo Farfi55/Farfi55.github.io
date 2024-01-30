@@ -1,4 +1,4 @@
-import type { Tecnology } from '../app';
+import type { Tecnology } from "./types";
 
 export const tecnologies: Tecnology[] = [
 	{
