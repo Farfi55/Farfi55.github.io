@@ -4,7 +4,9 @@ export interface Step {
 	icon: string;
 	href?: string;
 	description?: string;
-}export interface Tecnology {
+}
+
+export interface Technology {
 	name: string;
 	urlSlug: string;
 	iconSlug?: string;
@@ -13,6 +15,7 @@ export interface Step {
 	color?: string;
 	hide?: boolean;
 }
+
 export type Post = {
 	title: string;
 	subtitle?: string;

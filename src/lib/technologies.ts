@@ -1,6 +1,6 @@
-import type { Tecnology } from "./types";
+import type { Technology } from "./types";
 
-export const tecnologies: Tecnology[] = [
+export const technologies: Technology[] = [
 	{
 		name: 'Unity',
 		urlSlug: 'unity',
@@ -115,13 +115,13 @@ export const tecnologies: Tecnology[] = [
 	}
 ];
 
-const tecnologiesMap: Map<string, Tecnology> = new Map();
-tecnologies.forEach((t) => tecnologiesMap.set(t.name.toLowerCase(), t));
+const technologiesMap: Map<string, Technology> = new Map();
+technologies.forEach((t) => technologiesMap.set(t.name.toLowerCase(), t));
 
-export function getTecnology(name: string): Tecnology {
-	const tecnology = tecnologiesMap.get(name.toLowerCase());
-	if (tecnology) return tecnology;
+export function getTechnology(name: string): Technology {
+	const technology = technologiesMap.get(name.toLowerCase());
+	if (technology) return technology;
 
-	console.warn(`Tecnology ${name} not found, returning default`);
+	console.warn(`Technology ${name} not found, returning default`);
 	return { name: name.toString(), urlSlug: name.toString().toLowerCase() };
 }

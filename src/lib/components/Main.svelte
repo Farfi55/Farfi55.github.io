@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { tecnologies } from '$lib/Tecnologies';
+	import { technologies } from '$lib/technologies';
 	import type { Step } from '$lib/types';
 	import Button from './Button.svelte';
 	import Particles from './Particles.svelte';
@@ -68,9 +68,9 @@
 				My <span class="poppins text-main">Favourite tech</span> includes:
 			</p>
 			<ul class="flex flex-wrap justify-center lg:justify-start gap-4">
-				{#each tecnologies as tecnology (tecnology.name)}
-					{#if !tecnology.hide}
-						<Tech {tecnology} padding="px-1.5 py-1" />
+				{#each technologies as technology (technology.name)}
+					{#if !technology.hide}
+						<Tech {technology} padding="px-1.5 py-1" />
 					{/if}
 				{/each}
 			</ul>
