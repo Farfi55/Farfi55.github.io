@@ -8,18 +8,19 @@
 	<title>{config.title}</title>
 </svelte:head>
 
-<section>
-	<ul class="p-4 grid grid-cols items-center">
+<section class="p-4">
+	<h1 class="text-main text-4xl pb-8">Latest posts</h1>
+	<ul class="grid grid-cols items-center">
 		{#each data.posts as post, index}
-			<li class="p-4 bg-stone-200 dark:bg-stone-900 rounded-lg">
-				<a href="blog/{post.slug}">
+			<a href="blog/{post.slug}">
+				<li class="p-4 bg-stone-200 dark:bg-stone-900 rounded-lg shadow-lg">
 					<h2 class="text-main hover:underline capitalize text-2xl sm:text-3xl md:text-4xl">
 						{post.title}
 					</h2>
-				</a>
-				<p class="text-muted">{formatDate(post.date)}</p>
-				<p>{post.description}</p>
-			</li>
+					<p class="text-muted">{formatDate(post.date)}</p>
+					<p>{post.description}</p>
+				</li>
+			</a>
 			{#if index !== data.posts.length - 1}
 				<hr class="my-12 mx-8 border-stone-600 dark:border-stone-700" />
 			{/if}

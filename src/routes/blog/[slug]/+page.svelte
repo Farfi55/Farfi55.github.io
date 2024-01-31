@@ -12,8 +12,8 @@
 	<meta property="og:title" content={data.meta.title} />
 </svelte:head>
 
-<div class="containe mx-auto">
-	<article class="p-4">
+<div class="container mx-auto">
+	<article>
 		<hgroup>
 			<h1
 				class="poppins text-main text-center text-4xl sm:text-5xl md:text-6xl py-6 sm:py-8 md:py-10"
@@ -26,18 +26,23 @@
 					{data.meta.subtitle}
 				</h2>
 			{/if}
-
-			<p class="text-muted pb-3">Published at {formatDate(data.meta.date)}</p>
 		</hgroup>
 
-		<div class="flex gap-2">
-			<span>Tags:</span>
-			{#each data.meta.tags as tag}
-				<Tech name={tag}></Tech>
-			{/each}
+		<div class="flex justify-between flex-col sm:flex-row">
+			<div>
+				Tags:
+				{#each data.meta.tags as tag}
+					<div class="inline pe-2">
+						<Tech name={tag}></Tech>
+					</div>
+				{/each}
+			</div>
+			<div class="pt-2 sm:pt-0">
+				<p class="text-muted">Published at {formatDate(data.meta.date)}</p>
+			</div>
 		</div>
 
-		<section class="prose">
+		<section class="prose pt-5">
 			<svelte:component this={data.content} />
 		</section>
 	</article>
