@@ -36,9 +36,13 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"clsx": "^2.1.0",
+		"lucide-svelte": "^0.320.0",
 		"rehype-slug": "^6.0.0",
 		"remark-toc": "^9.0.0",
 		"remark-unwrap-images": "^4.0.0",
-		"shiki": "^0.14.7"
+		"shiki": "^0.14.7",
+		"tailwind-merge": "^2.2.1",
+		"tailwind-variants": "^0.1.20"
 	}
 }
