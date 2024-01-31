@@ -1,1 +1,55 @@
+.prose {
 
+	ul {
+		@apply ps-6;
+		list-style-type: circle;
+		list-style-position: inside;
+	}
+
+	ol {
+		@apply ps-6;
+		list-style-type: decimal;
+		list-style-position: inside;
+	}
+
+	#table-of-contents {
+		@apply bg-stone-200 dark:bg-stone-900 p-4 rounded-t;
+	}
+
+	#table-of-contents+ul {
+		@apply bg-stone-200 dark:bg-stone-900 p-4 pt-0 rounded-b mb-8 text-lg;
+
+		ul {
+			@apply border-s-2 border-stone-300 dark:border-stone-700;
+		}
+
+	}
+
+	a {
+		@apply hover:text-amber-600 hover:dark:text-amber-700;
+	}
+
+	h1,
+	h2,
+	h3,
+	h4,
+	h5 {
+		@apply pt-6
+	}
+
+
+	/* from https://github.com/shikijs/shiki/issues/3 */
+	code {
+		counter-reset: step;
+		counter-increment: step 0;
+	}
+
+	code .line::before {
+		content: counter(step);
+		counter-increment: step;
+		margin-right: 1.5rem;
+		display: inline-block;
+		text-align: right;
+		color: rgba(190, 190, 190, 0.4)
+	}
+}
