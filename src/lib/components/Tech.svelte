@@ -9,6 +9,9 @@
 	$: {
 		if (name) {
 			technology = getTechnology(name);
+			if (color === '' && technology?.color) {
+				color = technology.color;
+			}
 		}
 	}
 
@@ -30,11 +33,15 @@
 			class="flex {padding} gap-2 bg-stone-100 text-normal dark:bg-stone-800 dark:text-white rounded-md border-b-2 border-stone-300 hover:bg-stone-200 dark:hover:bg-stone-700 dark:border-stone-900 dark:hover:border-stone-800 hover:translate-y-1 duration-200 place-items-baseline"
 		>
 			{#if technology.iconSlug}
-				<img
-					src="https://cdn.simpleicons.org/{technology.iconSlug}/{color}"
-					alt={technology.name}
-					class="w-6 h-6 self-center"
-				/>
+				{#if technology.iconSlug.startsWith('fa-')}
+					<i class="{technology.iconSlug} text-base w-6 h-6 self-center text-center"></i>
+				{:else}
+					<img
+						src="https://cdn.simpleicons.org/{technology.iconSlug}/{color}"
+						alt={technology.name}
+						class="w-6 h-6 self-center"
+					/>
+				{/if}
 			{/if}
 
 			<span class="text-base">{technology.name}</span>

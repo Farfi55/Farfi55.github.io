@@ -5,7 +5,6 @@
 
 <a
 	href={step.href}
-	target="_blank"
 	class="p-4 sm:p-6 md:p-8 flex flex-col gap-4 rounded-lg border-2 border-solid link-main-border border-stone-700 text-center group cursor-pointer duration-200 bg-body"
 >
 	<div

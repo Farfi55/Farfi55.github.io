@@ -16,6 +16,7 @@ export const technologies: Technology[] = [
 	{
 		name: 'ASP',
 		urlSlug: 'asp',
+		iconSlug: 'fa-solid fa-code',
 		title: 'Answer Set Programming',
 		website: 'https://en.wikipedia.org/wiki/Answer_set_programming'
 	},
@@ -87,6 +88,7 @@ export const technologies: Technology[] = [
 	{
 		name: 'Java',
 		urlSlug: 'java',
+		iconSlug: 'fa-brands fa-java',
 		website: 'https://www.java.com/'
 	},
 	{
@@ -112,6 +114,18 @@ export const technologies: Technology[] = [
 		urlSlug: 'perl',
 		iconSlug: 'perl',
 		website: 'https://www.perl.org/'
+	},
+	{
+		name: 'Game',
+		urlSlug: 'game',
+		iconSlug: 'fa-solid fa-gamepad',
+		hide: true
+	},
+	{
+		name: 'Web',
+		urlSlug: 'web',
+		iconSlug: 'fa-solid fa-globe',
+		hide: true
 	}
 ];
 

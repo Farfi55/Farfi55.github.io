@@ -9,14 +9,17 @@
 	let steps: Step[] = [
 		{
 			name: 'School timetable',
+			href: '/projects#school-timetable',
 			icon: 'fa-solid fa-school'
 		},
 		{
 			name: 'CookedUp',
+			href: '/projects#cookedup',
 			icon: 'fa-brands fa-unity'
 		},
 		{
 			name: 'RiskASP',
+			href: '/projects#risk-asp',
 			icon: 'fa-solid fa-earth-europe'
 		}
 	];
