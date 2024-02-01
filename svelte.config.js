@@ -24,6 +24,7 @@ const mdsvexConfig = {
 	remarkPlugins: [
 		remarkUnwrapImages,
 		remarkToc,
+		
 	],
 	rehypePlugins: [
 		rehypeSlug,
@@ -47,6 +48,14 @@ const config = {
 			precompress: false,
 			strict: true
 		})
+	},
+	vitePlugin: {
+		inspector: {
+			// ctrl+alt+s
+			toggleKeyCombo: 'control-alt-s',
+			showToggleButton: 'always',
+			toggleButtonPos:'bottom-right'
+		}
 	}
 };
 

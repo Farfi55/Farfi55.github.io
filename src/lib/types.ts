@@ -26,3 +26,17 @@ export type Post = {
 	published: boolean;
 };
 
+
+export type Project = {
+	title: string;
+	slug: string;
+	description: string;
+	date: string;
+	tags: string[];
+	published: boolean;
+	coverImage?: string;
+	icon?: string;
+	images?: string[];
+	repo: string;
+};
+
