@@ -43,10 +43,10 @@
 
 <header class="sticky z-10 top-0">
 	<div
-		class={'duration-200 px-6 flex item-center items-center border-b-2 border-solid ' +
+		class={'duration-200 py-4 transition-colors px-6 flex item-center items-center border-b-2 border-solid ' +
 			(y > 0 || isDrawerOpen
-				? 'py-4 text-white bg-stone-700 dark:bg-stone-900 border-amber-700 dark:border-amber-900'
-				: 'py-4 border-none border-transparent')}
+				? 'text-stone-200 bg-stone-700 dark:bg-stone-900 border-amber-700 dark:border-amber-900'
+				: 'border-none border-transparent')}
 	>
 		<div class="inline sm:hidden pe-4">
 			<button on:click={toggleDrawer} class="text-2xl items-center w-5">

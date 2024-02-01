@@ -18,7 +18,7 @@
 					class="w-full text-center relative py-6
 			before:absolute before:top-0 before:left-0 before:w-2/3 before:h-1.5 before:bg-amber-600 dark:before:bg-amber-700 before:rounded
 			after:absolute after:bottom-0 after:right-0 after:w-2/3 after:h-1.5 after:bg-amber-600 dark:after:bg-amber-700 after:rounded
-			scroll-mt-20"
+			scroll-mt-24"
 					id={year.toString()}
 				>
 					<h3 class="text-4xl font-bold">
@@ -29,7 +29,7 @@
 
 			<div class="w-full max-w-6xl {index % 2 ? 'sm:ps-4 md:ps-20' : 'sm:pe-4 md:pe-20'}">
 				<div
-					class="bg-stone-200 dark:bg-stscroll-pt-20-900 rounded-lg shadow-md flex flex-col sm:flex-row sm:gap-2 overflow-hidden w-full snap-center scroll-mt-20"
+					class="bg-stone-200 dark:bg-stone-900 rounded-lg shadow-md flex flex-col sm:flex-row sm:gap-2 overflow-hidden w-full snap-center scroll-mt-24"
 					id={project.slug}
 				>
 					{#if project.coverImage}

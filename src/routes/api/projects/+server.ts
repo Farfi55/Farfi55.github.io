@@ -50,14 +50,41 @@ async function getProjects() {
 		},
 		{
 			title: "BurnTables",
-			slug: "burntables",
+			slug: "burn-tables",
 			description: "A web app for reviewing songs and albums, with Spotify integration.",
 			date: "2023-02-06",
 			published: true,
 			tags: ["Angular", "TypeScript", "Web", "Bootstrap"],
-			repo: "https://github.com/BurnTables/BurnTablesApp"
+			repo: "https://github.com/BurnTables/BurnTablesApp",
+			coverImage: "/assets/projects/burn-tables/cover.png",
+			images: [
+				"/assets/projects/burn-tables/cover.png",
+				"/assets/projects/burn-tables/artist.png",
+				"/assets/projects/burn-tables/track.png",
+				"/assets/projects/burn-tables/feed.png",
+				"/assets/projects/burn-tables/home.png",
+				"/assets/projects/burn-tables/profile.png",
+				"/assets/projects/burn-tables/reports.png",
+			]
+		},
+		{
+			title: "Svinted",
+			slug: "svinted",
+			description: "A web app for buying and selling second-hand clothes heavily inspired by Vinted.",
+			date: "2022-09-08",
+			published: true,
+			tags: ["Spring", "Java", "Angular", "TypeScript", "Web", "Bootstrap"],
+			repo: "https://github.com/Enterprise-Intellijence/web-site",
+			coverImage: "/assets/projects/svinted/home.png",
+			images: [
+				"/assets/projects/svinted/home.png",
+				"/assets/projects/svinted/item-page.png",
+				"/assets/projects/svinted/chat.png",
+				"/assets/projects/svinted/profile.png",
+				"/assets/projects/svinted/order-page.png",
+				"/assets/projects/svinted/orders-dashboard.png",
+			],
 		}
-
 	];
 
 
