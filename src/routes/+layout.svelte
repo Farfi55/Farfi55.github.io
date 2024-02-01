@@ -17,7 +17,7 @@
 	}
 </script>
 
-<div class="relative flex flex-col mx-auto w-full text-sm sm:text-base min-h-screen">
+<div class="relative flex flex-col mx-auto w-full text-sm sm:text-base min-h-screen scroll-pt-20">
 	<Header {y} />
 
 	<PageTransition url={data.url}>
