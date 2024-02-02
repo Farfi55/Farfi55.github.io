@@ -1,7 +1,6 @@
 <script lang="ts">
 	import Button from '$lib/components/Button.svelte';
 	import Tech from '$lib/components/Tech.svelte';
-	import type { Project } from '$lib/types';
 	import { formatDate } from '$lib/utils';
 
 	export let data;
@@ -15,10 +14,9 @@
 			<!-- when the project year is different from the previous project year, create a h3 header with the year in question -->
 			{#if index === 0 || year !== prevYear}
 				<div
-					class="w-full text-center relative py-6
+					class="w-full text-center relative py-6 mt-6 scroll-mt-24
 			before:absolute before:top-0 before:left-0 before:w-2/3 before:h-1.5 before:bg-amber-600 dark:before:bg-amber-700 before:rounded
-			after:absolute after:bottom-0 after:right-0 after:w-2/3 after:h-1.5 after:bg-amber-600 dark:after:bg-amber-700 after:rounded
-			scroll-mt-24"
+			after:absolute after:bottom-0 after:right-0 after:w-2/3 after:h-1.5 after:bg-amber-600 dark:after:bg-amber-700 after:rounded"
 					id={year.toString()}
 				>
 					<h3 class="text-4xl font-bold">
@@ -65,5 +63,7 @@
 				</div>
 			</div>
 		{/each}
+
+		<h3 class="text-muted py-8 text-3xl">And many other unfinished projects...</h3>
 	</div>
 </section>

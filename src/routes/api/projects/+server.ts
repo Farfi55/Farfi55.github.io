@@ -11,6 +11,16 @@ async function getProjects() {
 	const github = "https://github.com/Farfi55";
 	let projects: Project[] = [
 		{
+			title: "Personal website",
+			slug: "personal-website",
+			description: "This website, built with SvelteKit, Tailwind CSS and more.",
+			date: "2024-01-10",
+			published: true,
+			tags: ["Svelte", "TypeScript", "Tailwind CSS", "Web"],
+			repo: github + '/farfi55.github.io',
+			coverImage: "/assets/projects/personal-website/cover.png",
+		},
+		{
 			title: "CookedUp",
 			slug: "cookedup",
 			description: "A Unity cooking game with a focus on declarative AI using Answer Set Programming.",
@@ -84,6 +94,16 @@ async function getProjects() {
 				"/assets/projects/svinted/order-page.png",
 				"/assets/projects/svinted/orders-dashboard.png",
 			],
+		},
+		{
+			title: "Cave generator",
+			slug: "cave-generator",
+			description: "A procedural cave generator using cellular automata.",
+			date: "2022-06-20",
+			published: true,
+			tags: ["C++", "MPI", "Allegro"],
+			repo: github + '/Allegro-MPI-Cave-Generator',
+			coverImage: "/assets/projects/cave-generator/cover.png",
 		}
 	];
 
