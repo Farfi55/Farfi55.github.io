@@ -26,8 +26,7 @@
 		{
 			href: '/contact',
 			text: 'Contact',
-			icon: 'fa fa-envelope',
-			hideInHeader: true
+			icon: 'fa fa-envelope'
 		}
 	];
 	let isDrawerOpen = false;
@@ -57,7 +56,7 @@
 				{/if}
 			</button>
 		</div>
-		<h1 class="font-medium h-full pe-7">
+		<h1 class="font-medium h-full pe-7 text-lg">
 			<a
 				href="/"
 				class="link-main duration-200 border-b {$page.route.id === '/'

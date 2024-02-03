@@ -26,7 +26,7 @@
 </script>
 
 <div
-	class="absolute min-h-screen top-0 left-0 w-full z-[-1] duration-500 bg-gradient-to-b {loaded
+	class="absolute -z-10 min-h-screen top-0 left-0 w-full duration-500 bg-gradient-to-b {loaded
 		? 'opacity-70'
 		: 'opacity-0'}"
 >
