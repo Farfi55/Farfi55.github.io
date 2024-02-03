@@ -16,7 +16,7 @@ async function getProjects() {
 			description: "This website, built with SvelteKit, Tailwind CSS and more.",
 			date: "2024-01-10",
 			published: true,
-			tags: ["Svelte", "TypeScript", "Tailwind CSS", "Web"],
+			tags: ["Svelte", "TypeScript", "Tailwind", "Web"],
 			repo: github + '/farfi55.github.io',
 			coverImage: "/assets/projects/personal-website/cover.png",
 		},
