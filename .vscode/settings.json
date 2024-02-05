@@ -1,5 +1,8 @@
 {
 	"github-actions.workflows.pinned.workflows": [
 		".github/workflows/deploy.yml"
+	],
+	"i18n-ally.localesPaths": [
+		"static/locales"
 	]
 }
