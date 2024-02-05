@@ -24,7 +24,7 @@
 		}
 	];
 
-	let benefits = [
+	let aboutFacts = [
 		{
 			name: 'a passionate nerd',
 			description:
@@ -38,7 +38,9 @@
 		{
 			name: 'An Artificial Intelligence Student',
 			description:
-				"At the University of Calabria, I learned to build Artificial Intelligence agents using Answer Set Programming (ASP) from the most brilliant minds in the field. And I've used this knowledge to build a few projects, like School Timetable and CookedUp."
+				"At <i>University of Calabria</i>, I learned to build <b>Artificial Intelligence agents</b> using <b>Answer Set Programming</b> (ASP) from the most brilliant minds in the field. And I've used this knowledge to build a few projects, like " +
+				"<a class='link-main font-semibold' href='/projects#school-timetable'>School Timetable</a> and " +
+				"<a class='link-main font-semibold' href='/projects#cookedup'>CookedUp</a>."
 		}
 	];
 </script>
@@ -46,42 +48,45 @@
 <Particles />
 <main class="flex flex-col flex-1 p-4">
 	<section id="intro-page" class="grid grid-cols-1 lg:grid-cols-3 gap-10 py-8 sm:py-14">
-		<div
-			class="flex flex-col lg:justify-center text-center lg:col-span-2 lg:text-left gap-6 md:gap-8"
-		>
-			<h2 class="font-semibold text-3xl sm:text-5xl">
-				Ciao! I'm <span class="poppins text-main">Alessio</span> Farfaglia<br />
-				<!-- <span class="poppins text-main">Computer Science</span> Student -->
+		<div class="flex flex-col lg:justify-center text-center lg:col-span-2 lg:text-left">
+			<h1 class="text-3xl sm:text-5xl pb-2">
+				Ciao! I'm <span class="poppins text-main">Farfi</span>!<br />
+			</h1>
+			<h2 class="text-xl sm:text-2xl pb-5">
+				My real name is <span class="poppins text-main">Alessio Farfaglia</span> though.
 			</h2>
 
-			<p>
-				I'm a <span class="poppins text-main">Computer Science</span> student at
-				<a href="https://www.unical.it/?lang=en" target="_blank" class="underline">
+			<p class="text-base sm:text-lg md:text-xl pb-8">
+				I'm a <span class="poppins text-main font-semibold">Computer Science</span> student at
+				<a href="https://www.unical.it/?lang=en" target="_blank" class="link-main poppins">
 					University of Calabria</a
-				>, Italy 🇮🇹.
+				>
+				🇮🇹.
 				<br />
-				I'm passionate about
-				<span class="poppins text-main" title="Game development">Game Dev</span>,
-				<span class="poppins text-main" title="Web development">Web Dev</span>
-				and <span class="poppins text-main" title="Artificial Intelligence">AI</span>.
+				who loves developing
+				<span class="poppins text-main font-semibold">Games</span>,
+				<span class="poppins text-main font-semibold">Websites</span>
+				and <abbr class="poppins text-main font-semibold" title="Artificial Intelligence">AI</abbr> stuff.
 			</p>
 
-			<p class="text-base sm:text-lg md:text-xl">
-				My <span class="poppins text-main">Favourite tech</span> includes:
-			</p>
-			<ul class="flex flex-wrap justify-center lg:justify-start gap-4">
+			<p class="text-base sm:text-lg md:text-xl pb-4">My Favourite tech includes:</p>
+			<ul class="flex flex-wrap justify-center lg:justify-start gap-2 sm:gap-4">
 				{#each technologies as technology (technology.name)}
 					{#if !technology.hide}
-						<Tech {technology} padding="px-1.5 py-1" />
+						<Tech {technology} />
 					{/if}
 				{/each}
 			</ul>
 		</div>
 	</section>
 
-	<section id="projects" class="py-20 lg:py-28 flex flex-col gap-24 scroll-mt-20">
+	<div class="flex justify-center pt-20">
+		<Button href="/#projects">
+			Scroll down <i class="fa-solid fa-arrow-down"></i>
+		</Button>
+	</div>
+	<section id="projects" class="py-20 lg:py-28 flex flex-col gap-24">
 		<div class="flex flex-col gap-2 text-center">
-			<h6 class="text-lg sm:text-xl md:text-2xl">A few of my projects</h6>
 			<h3 class="font-semibold text-3xl sm:text-4xl md:text-5xl">
 				Curious to <span class="poppins text-main">see</span> my work?
 			</h3>
@@ -110,12 +115,6 @@
 				</p>
 			</Steps>
 		</div>
-		<!-- <a
-			href="#"
-			class="mx-auto px-4 py-1 rounded-md border border-solid border-black dark:border-white flex items-center link-main duration-200 link-main-border -mt-16 duration-200"
-		>
-			<p class="text-base sm:text-lg md:text-xl">See more</p>
-		</a> -->
 		<div class="flex items-center justify-center">
 			<Button href="/projects">See more</Button>
 		</div>
@@ -130,7 +129,6 @@
 			before:absolute before:top-0 before:left-0 before:w-2/3 before:h-1.5 before:bg-amber-600 dark:before:bg-amber-700 before:rounded
 			after:absolute after:bottom-0 after:right-0 after:w-2/3 after:h-1.5 after:bg-amber-600 dark:after:bg-amber-700 after:rounded"
 		>
-			<h6 class="text-lg sm:text-xl md:text-xl">Want to know more?</h6>
 			<h3 class="font-semibold text-3xl sm:text-4xl md:text-5xl">
 				A bit <span class="poppins text-main">about</span> me.
 			</h3>
@@ -138,7 +136,7 @@
 
 		<p class="mx-auto poppins font-semibold text-lg sm:text-xl md:text-2xl">I am . . .</p>
 		<div class="flex flex-col gap-20 w-full mx-auto max-w-[800px] text-start">
-			{#each benefits as benefit, index}
+			{#each aboutFacts as benefit, index}
 				<div class="flex gap-6 sm:gap-8">
 					<p class="poppins text-4xl sm:text-5xl md:text-6xl text-stone-500">
 						0{index + 1}

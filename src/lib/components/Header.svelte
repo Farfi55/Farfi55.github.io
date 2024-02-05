@@ -59,7 +59,7 @@
 		<h1 class="font-medium h-full pe-7 text-lg">
 			<a
 				href="/"
-				class="link-main duration-200 border-b {$page.route.id === '/'
+				class="link-main duration-200 border-b-2 {$page.route.id === '/'
 					? 'border-main'
 					: 'border-transparent'}"
 			>
@@ -71,7 +71,7 @@
 				{#if !tab.hideInHeader}
 					<a
 						href={tab.href}
-						class="link-main duration-200 border-b {tab.href === $page.route.id
+						class="text-base link-main duration-200 border-b-2 {tab.href === $page.route.id
 							? 'border-main'
 							: 'border-transparent'}"
 					>
@@ -82,7 +82,7 @@
 		</div>
 
 		<div class="flex gap-2 ms-auto">
-			<div class="">
+			<div class="hidden md:flex">
 				<Button href="/contact">Get in touch</Button>
 			</div>
 			<div class="hidden sm:flex items-center">
