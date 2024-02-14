@@ -26,7 +26,12 @@
 		{
 			href: '/contact',
 			text: 'Contact',
-			icon: 'fa fa-envelope'
+			icon: 'fa-solid fa-envelope'
+		},
+		{
+			href: '/sudoku',
+			text: 'sudoku',
+			icon: 'fa-solid fa-th'
 		}
 	];
 	let isDrawerOpen = false;
