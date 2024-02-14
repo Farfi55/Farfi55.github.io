@@ -123,12 +123,19 @@
 		return true;
 	}
 
-	let board: Board | undefined = BLANK_BOARD;
-	let selectedNumber: number = 1;
-	let numbersLeftToPlace = Array(10).fill(9);
+	let board: Board = BLANK_BOARD;
+	let startingBoard: Board = BLANK_BOARD;
+	let annotations: boolean[][][] = newAnnotations();
+
+	let selectedNumber: number = 0;
+	let annotationsMode = false;
+
+	let numbersLeftToPlace = Array(10).fill(0);
+
 	let gameOver = false;
 	let showGameOverDialog = false;
 	let startedAt = Date.now();
+	let gameDuration: string = '0:00';
 
 	onMount(() => newGame());
 
@@ -143,43 +150,80 @@
 
 		for (let i = 0; i < 9; i++) {
 			for (let j = 0; j < 9; j++) {
-				if (Math.random() < 0.1) {
+				if (Math.random() < 0.5) {
 					tmpBoard[i][j] = 0;
 				}
 			}
 		}
 
 		board = tmpBoard;
-		numbersLeftToPlace = Array(10).fill(9);
-		board.forEach((row) => row.forEach((cell) => (numbersLeftToPlace[cell] -= 1)));
+		startingBoard = tmpBoard.map((row) => [...row]);
+		annotations = newAnnotations();
+		numbersLeftToPlace = getNumbersLeftToPlace();
+
+		// trigger reactivity
+		board = board;
 	}
 
 	function onCellClicked(event: CustomEvent<{ row: number; col: number }>) {
-		if (!board) return;
+		if (isDisabled()) return;
 		const { row, col } = event.detail;
 
+		if (annotationsMode) {
+			writeAnnotation(row, col);
+		} else {
+			writeNumber(row, col);
+		}
+	}
+
+	function onCellClickedAlt(event: CustomEvent<{ row: number; col: number }>) {
+		if (isDisabled()) return;
+		const { row, col } = event.detail;
+
+		if (annotationsMode) {
+			writeNumber(row, col);
+		} else {
+			writeAnnotation(row, col);
+		}
+	}
+
+	function writeNumber(row: number, col: number) {
+		if (startingBoard && startingBoard[row][col] !== 0) return;
+
 		let oldValue = board[row][col];
+		// if the cell already contains the selected number, erase it
 		if (oldValue === selectedNumber) {
+			if (selectedNumber === 0) {
+				annotations[row][col] = Array(10).fill(false);
+			}
+
 			board[row][col] = 0;
 		} else {
-			board[row][col] = selectedNumber || 0;
+			board[row][col] = selectedNumber;
 			let isCompleted = checkBoardCompleted(board);
-			console.log('isCompleted:', isCompleted);
 			if (isCompleted) {
 				onBoardCompleted();
 			}
 		}
 
-		numbersLeftToPlace = Array(10).fill(9);
-		board.forEach((row) => row.forEach((cell) => (numbersLeftToPlace[cell] -= 1)));
+		numbersLeftToPlace = getNumbersLeftToPlace();
 	}
 
-	function onCellClickedAlt(event: CustomEvent<{ row: number; col: number }>) {
-		if (!board) return;
-		const { row, col } = event.detail;
-		board[row][col] = 0;
-		numbersLeftToPlace = Array(10).fill(9);
-		board.forEach((row) => row.forEach((cell) => (numbersLeftToPlace[cell] -= 1)));
+	function writeAnnotation(row: number, col: number) {
+		if (startingBoard && startingBoard[row][col] !== 0) return;
+		if (board[row][col] !== 0) {
+			board[row][col] = 0;
+		}
+
+		if (selectedNumber === 0) {
+			annotations[row][col] = Array(10).fill(false);
+		} else {
+			annotations[row][col][selectedNumber] = !annotations[row][col][selectedNumber];
+		}
+	}
+
+	function isDisabled() {
+		return gameOver || board === BLANK_BOARD;
 	}
 
 	function onKeyDown(event: KeyboardEvent) {
@@ -203,60 +247,109 @@
 				selectedNumber = parseInt(event.key);
 				event.preventDefault();
 				break;
-			case 'r':
-				onBoardCompleted();
-				break;
 			default:
 				break;
 		}
 	}
 
+	function newAnnotations() {
+		return Array(9)
+			.fill(0)
+			.map(() =>
+				Array(9)
+					.fill(0)
+					.map(() => Array(10).fill(false))
+			);
+	}
+
+	function getNumbersLeftToPlace(): number[] {
+		let leftToPlace = Array(10).fill(9);
+		board.forEach((row) => row.forEach((cell) => (leftToPlace[cell] -= 1)));
+		return leftToPlace;
+	}
+
 	function onBoardCompleted() {
 		gameOver = true;
+		let gameDurationSeconds = Math.floor((Date.now() - startedAt) / 1000);
+		gameDuration = `${Math.floor(gameDurationSeconds / 60)}:${(gameDurationSeconds % 60)
+			.toString()
+			.padStart(2, '0')}`;
 		showGameOverDialog = true;
+	}
+
+	function restartGame() {
+		if (isDisabled()) return;
+		board = startingBoard.map((row) => [...row]);
+		annotations = newAnnotations();
+		numbersLeftToPlace = getNumbersLeftToPlace();
 	}
 </script>
 
 <svelte:window on:keydown={onKeyDown} />
 
 <section class="p-4">
-	<h1 class="text-main text-4xl">Sudoku</h1>
+	<div class="flex gap-4">
+		<h1 class="text-main text-4xl">Sudoku</h1>
+		<div class="w-40">
+			<ButtonSimple on:click={() => newGame()}>New Game</ButtonSimple>
+		</div>
+		<div class="w-40">
+			<ButtonSimple on:click={() => restartGame()}>Restart</ButtonSimple>
+		</div>
+	</div>
 
-	<div class="flex justify-center py-12">
+	<div class="flex flex-col md:flex-row items-center justify-center gap-12 py-12">
 		<SudokuBoard
 			{board}
 			on:cellClicked={onCellClicked}
 			on:cellClickedAlt={onCellClickedAlt}
 			{selectedNumber}
+			{startingBoard}
+			{annotations}
+			disabled={isDisabled()}
 		></SudokuBoard>
-	</div>
 
-	<div class="flex justify-center pb-8 text-2xl text-stone-700 dark:text-stone-300 gap-1 sm:gap-2">
-		{#each [...numbers] as number}
-			{@const leftToPlace = numbersLeftToPlace[number]}
-			<div class="w-12 relative">
-				<ButtonSimple on:click={() => (selectedNumber = number)} active={selectedNumber === number}>
-					{number}
-					<span class="sr-only">Numbers left to place</span>
-					{#key leftToPlace}
-						<div
-							class="absolute inline-flex items-center justify-center w-5 h-5 text-xs font-bold rounded-full -top-4 sm:-top-1 -end-1 text-stone-500 dark:text-stone-400 bg-stone-200 dark:bg-stone-800 shadow
+		<div
+			class="flex md:w-48 justify-center md:justify-center flex-wrap pb-8 text-2xl text-stone-700 dark:text-stone-300 gap-1 gap-y-5 md:gap-3"
+		>
+			{#each [...numbers] as number}
+				{@const leftToPlace = numbersLeftToPlace[number]}
+				<div class="w-12 h-fit relative">
+					<ButtonSimple
+						on:click={() => (selectedNumber = number)}
+						active={selectedNumber === number}
+					>
+						{number}
+						<span class="sr-only">Numbers left to place</span>
+						{#key leftToPlace}
+							<div
+								class="absolute inline-flex items-center justify-center w-5 h-5 text-xs font-bold rounded-full -top-1 -end-1 text-stone-500 dark:text-stone-400 bg-stone-200 dark:bg-stone-800 shadow
 								{leftToPlace === 0 ? 'hidden' : ''}"
-						>
-							<span in:scale={{ opacity: 0, easing: quadOut, duration: 200 }}>{leftToPlace}</span>
-						</div>
-					{/key}
+							>
+								<span in:fade={{ easing: quadOut, duration: 300 }}>{leftToPlace}</span>
+							</div>
+						{/key}
+					</ButtonSimple>
+				</div>
+			{/each}
+			<div class="w-12 h-fit relative">
+				<ButtonSimple
+					on:click={() => (annotationsMode = !annotationsMode)}
+					active={annotationsMode}
+					aria-label="Annotations mode"
+				>
+					<i class="fas fa-pencil-alt"></i>
 				</ButtonSimple>
 			</div>
-		{/each}
-		<div class="w-12 relative">
-			<ButtonSimple
-				on:click={() => (selectedNumber = 0)}
-				active={selectedNumber === 0}
-				aria-label="Erase"
-			>
-				<i class="fas fa-eraser"></i>
-			</ButtonSimple>
+			<div class="w-12 h-fit relative">
+				<ButtonSimple
+					on:click={() => (selectedNumber = 0)}
+					active={selectedNumber === 0}
+					aria-label="Erase"
+				>
+					<i class="fas fa-eraser"></i>
+				</ButtonSimple>
+			</div>
 		</div>
 	</div>
 </section>
@@ -267,14 +360,19 @@
 	<button
 		class="fixed inset-0 z-10 w-full flex items-center justify-center bg-black bg-opacity-50"
 		in:fade={{ duration: 200, easing: quadInOut }}
-		on:click={() => (showGameOverDialog = true)}
+		on:click={() => (showGameOverDialog = false)}
 		aria-label="Close dialog"
 	>
 		<div
 			class="bg-stone-100 dark:bg-stone-900 rounded-lg p-8 text-center"
 			in:fly={{ duration: 300, y: 300, easing: cubicOut }}
+			on:click={(e) => e.stopPropagation()}
 		>
 			<h2 class="text-4xl text-main pb-4">You won!</h2>
+
+			<p class="text-stone-700 dark:text-stone-300 pb-4">
+				You completed the game in {gameDuration} minutes
+			</p>
 			<div class="flex flex-col gap-4">
 				<ButtonSimple on:click={() => newGame()}>New Game</ButtonSimple>
 				<ButtonSimple on:click={() => (showGameOverDialog = false)}>Close</ButtonSimple>
