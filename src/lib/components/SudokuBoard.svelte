@@ -5,6 +5,7 @@
 	}>();
 
 	export let board: number[][] | undefined;
+	export let selectedNumber: number | undefined;
 </script>
 
 {#if board}
@@ -33,7 +34,8 @@
 					"
 					>
 						<div
-							class="flex bg-transparent rounded w-full h-full group-hover:bg-stone-200 dark:group-hover:bg-stone-800 items-center justify-center"
+							class="flex rounded w-full h-full group-hover:bg-stone-200 bg-transparent dark:group-hover:bg-stone-800 items-center justify-center
+							{cell === selectedNumber ? 'font-bold text-main' : ''}"
 						>
 							{cell || ' '}
 						</div>

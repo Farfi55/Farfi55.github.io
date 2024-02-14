@@ -99,23 +99,135 @@
 		return board;
 	}
 
+	function checkBoardCompleted(board: Board): boolean {
+		for (let i = 0; i < board.length; i++) {
+			const row = board[i];
+			for (let j = 0; j < row.length; j++) {
+				const cell = row[j];
+				if (cell === 0) return false;
+
+				for (let k = 0; k < 9; k++) {
+					if (k != i && board[k][j] === cell) return false;
+					if (k != j && row[k] === cell) return false;
+
+					let boxI = i - (i % 3) + Math.floor(k / 3);
+					let boxJ = j - (j % 3) + (k % 3);
+
+					if (boxI != i && boxJ != j && board[boxI][boxJ] === cell) return false;
+				}
+			}
+		}
+		return true;
+	}
+
 	let board: Board | undefined;
+	let selectedNumber: number = 1;
+	let numbersLeftToPlace = Array(10).fill(9);
 
 	onMount(() => {
 		board = generateSolvedBoard();
+
+		for (let i = 0; i < 9; i++) {
+			for (let j = 0; j < 9; j++) {
+				if (Math.random() < 0.5) {
+					board[i][j] = 0;
+				}
+			}
+		}
+		numbersLeftToPlace = Array(10).fill(9);
+		board.forEach((row) => row.forEach((cell) => (numbersLeftToPlace[cell] -= 1)));
 	});
 
 	function onCellClicked(event: CustomEvent<{ row: number; col: number }>) {
+		if (!board) return;
 		const { row, col } = event.detail;
-		console.log(`Cell clicked: row ${row}, col ${col}`);
 
-		board[row][col] = (board[row][col] + 1) % 10;
+		let oldValue = board[row][col];
+		if (oldValue === selectedNumber) {
+			board[row][col] = 0;
+		} else {
+			board[row][col] = selectedNumber || 0;
+			let isCompleted = checkBoardCompleted(board);
+			console.log('isCompleted:', isCompleted);
+		}
+
+		numbersLeftToPlace = Array(10).fill(9);
+		board.forEach((row) => row.forEach((cell) => (numbersLeftToPlace[cell] -= 1)));
+	}
+
+	function onKeyDown(event: KeyboardEvent) {
+		switch (event.key) {
+			case 'Backspace':
+			case '0':
+			case '\\':
+				selectedNumber = 0;
+				break;
+			case '1':
+				selectedNumber = 1;
+				break;
+			case '2':
+				selectedNumber = 2;
+				break;
+			case '3':
+				selectedNumber = 3;
+				break;
+			case '4':
+				selectedNumber = 4;
+				break;
+			case '5':
+				selectedNumber = 5;
+				break;
+			case '6':
+				selectedNumber = 6;
+				break;
+			case '7':
+				selectedNumber = 7;
+				break;
+			case '8':
+				selectedNumber = 8;
+				break;
+			case '9':
+				selectedNumber = 9;
+				break;
+			default:
+				break;
+		}
 	}
 </script>
 
+<svelte:window on:keydown|preventDefault={onKeyDown} />
+
 <section class="p-4">
 	<h1 class="text-main text-4xl pb-8">Sudoku</h1>
+
 	<div class="flex justify-center py-12">
-		<SudokuBoard {board} on:cellClicked={onCellClicked}></SudokuBoard>
+		<SudokuBoard {board} on:cellClicked={onCellClicked} {selectedNumber}></SudokuBoard>
+	</div>
+
+	<div class="flex justify-center pb-8 text-2xl text-stone-700 dark:text-stone-300 gap-2">
+		{#each [...numbers, 0] as number}
+			<button
+				on:click={() => (selectedNumber = number)}
+				class="relative border-stone-400 dark:border-stone-700 border-2 rounded-lg w-12 h-12 border-b-4
+				transition-colors bg-stone-200 dark:bg-stone-900 hover:bg-stone-300 dark:hover:bg-stone-800
+				{selectedNumber === number ? ' border-amber-600 dark:border-amber-700' : '  '}"
+			>
+				{#if number === 0}
+					<i class="fas fa-eraser"></i>
+				{:else}
+					<span>
+						{number}
+					</span>
+					{#if numbersLeftToPlace[number] != 0}
+						<span class="sr-only">Numbers left to place</span>
+						<div
+							class="absolute inline-flex items-center justify-center w-5 h-5 text-xs font-bold rounded-full -top-4 sm:-top-1 -end-1 text-stone-500 dark:text-stone-400 bg-stone-200 dark:bg-stone-800 shadow"
+						>
+							{numbersLeftToPlace[number]}
+						</div>
+					{/if}
+				{/if}
+			</button>
+		{/each}
 	</div>
 </section>
