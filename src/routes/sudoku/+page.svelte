@@ -1,6 +1,9 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import SudokuBoard from '$lib/components/SudokuBoard.svelte';
+	import ButtonSimple from '$lib/components/ui/ButtonSimple.svelte';
+	import { fade, fly, scale } from 'svelte/transition';
+	import { cubicOut, quadInOut, quadOut } from 'svelte/easing';
 
 	const BLANK_BOARD = [
 		[0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -120,23 +123,36 @@
 		return true;
 	}
 
-	let board: Board | undefined;
+	let board: Board | undefined = BLANK_BOARD;
 	let selectedNumber: number = 1;
 	let numbersLeftToPlace = Array(10).fill(9);
+	let gameOver = false;
+	let showGameOverDialog = false;
+	let startedAt = Date.now();
 
-	onMount(() => {
-		board = generateSolvedBoard();
+	onMount(() => newGame());
+
+	function newGame() {
+		showGameOverDialog = false;
+		gameOver = false;
+		selectedNumber = 1;
+		startedAt = Date.now();
+
+		board = BLANK_BOARD;
+		let tmpBoard = generateSolvedBoard();
 
 		for (let i = 0; i < 9; i++) {
 			for (let j = 0; j < 9; j++) {
-				if (Math.random() < 0.5) {
-					board[i][j] = 0;
+				if (Math.random() < 0.1) {
+					tmpBoard[i][j] = 0;
 				}
 			}
 		}
+
+		board = tmpBoard;
 		numbersLeftToPlace = Array(10).fill(9);
 		board.forEach((row) => row.forEach((cell) => (numbersLeftToPlace[cell] -= 1)));
-	});
+	}
 
 	function onCellClicked(event: CustomEvent<{ row: number; col: number }>) {
 		if (!board) return;
@@ -149,8 +165,19 @@
 			board[row][col] = selectedNumber || 0;
 			let isCompleted = checkBoardCompleted(board);
 			console.log('isCompleted:', isCompleted);
+			if (isCompleted) {
+				onBoardCompleted();
+			}
 		}
 
+		numbersLeftToPlace = Array(10).fill(9);
+		board.forEach((row) => row.forEach((cell) => (numbersLeftToPlace[cell] -= 1)));
+	}
+
+	function onCellClickedAlt(event: CustomEvent<{ row: number; col: number }>) {
+		if (!board) return;
+		const { row, col } = event.detail;
+		board[row][col] = 0;
 		numbersLeftToPlace = Array(10).fill(9);
 		board.forEach((row) => row.forEach((cell) => (numbersLeftToPlace[cell] -= 1)));
 	}
@@ -158,76 +185,100 @@
 	function onKeyDown(event: KeyboardEvent) {
 		switch (event.key) {
 			case 'Backspace':
-			case '0':
 			case '\\':
+			case 'Delete':
 				selectedNumber = 0;
+				event.preventDefault();
 				break;
+			case '0':
 			case '1':
-				selectedNumber = 1;
-				break;
 			case '2':
-				selectedNumber = 2;
-				break;
 			case '3':
-				selectedNumber = 3;
-				break;
 			case '4':
-				selectedNumber = 4;
-				break;
 			case '5':
-				selectedNumber = 5;
-				break;
 			case '6':
-				selectedNumber = 6;
-				break;
 			case '7':
-				selectedNumber = 7;
-				break;
 			case '8':
-				selectedNumber = 8;
-				break;
 			case '9':
-				selectedNumber = 9;
+				selectedNumber = parseInt(event.key);
+				event.preventDefault();
+				break;
+			case 'r':
+				onBoardCompleted();
 				break;
 			default:
 				break;
 		}
 	}
+
+	function onBoardCompleted() {
+		gameOver = true;
+		showGameOverDialog = true;
+	}
 </script>
 
-<svelte:window on:keydown|preventDefault={onKeyDown} />
+<svelte:window on:keydown={onKeyDown} />
 
 <section class="p-4">
-	<h1 class="text-main text-4xl pb-8">Sudoku</h1>
+	<h1 class="text-main text-4xl">Sudoku</h1>
 
 	<div class="flex justify-center py-12">
-		<SudokuBoard {board} on:cellClicked={onCellClicked} {selectedNumber}></SudokuBoard>
+		<SudokuBoard
+			{board}
+			on:cellClicked={onCellClicked}
+			on:cellClickedAlt={onCellClickedAlt}
+			{selectedNumber}
+		></SudokuBoard>
 	</div>
 
-	<div class="flex justify-center pb-8 text-2xl text-stone-700 dark:text-stone-300 gap-2">
-		{#each [...numbers, 0] as number}
-			<button
-				on:click={() => (selectedNumber = number)}
-				class="relative border-stone-400 dark:border-stone-700 border-2 rounded-lg w-12 h-12 border-b-4
-				transition-colors bg-stone-200 dark:bg-stone-900 hover:bg-stone-300 dark:hover:bg-stone-800
-				{selectedNumber === number ? ' border-amber-600 dark:border-amber-700' : '  '}"
-			>
-				{#if number === 0}
-					<i class="fas fa-eraser"></i>
-				{:else}
-					<span>
-						{number}
-					</span>
-					{#if numbersLeftToPlace[number] != 0}
-						<span class="sr-only">Numbers left to place</span>
+	<div class="flex justify-center pb-8 text-2xl text-stone-700 dark:text-stone-300 gap-1 sm:gap-2">
+		{#each [...numbers] as number}
+			{@const leftToPlace = numbersLeftToPlace[number]}
+			<div class="w-12 relative">
+				<ButtonSimple on:click={() => (selectedNumber = number)} active={selectedNumber === number}>
+					{number}
+					<span class="sr-only">Numbers left to place</span>
+					{#key leftToPlace}
 						<div
-							class="absolute inline-flex items-center justify-center w-5 h-5 text-xs font-bold rounded-full -top-4 sm:-top-1 -end-1 text-stone-500 dark:text-stone-400 bg-stone-200 dark:bg-stone-800 shadow"
+							class="absolute inline-flex items-center justify-center w-5 h-5 text-xs font-bold rounded-full -top-4 sm:-top-1 -end-1 text-stone-500 dark:text-stone-400 bg-stone-200 dark:bg-stone-800 shadow
+								{leftToPlace === 0 ? 'hidden' : ''}"
 						>
-							{numbersLeftToPlace[number]}
+							<span in:scale={{ opacity: 0, easing: quadOut, duration: 200 }}>{leftToPlace}</span>
 						</div>
-					{/if}
-				{/if}
-			</button>
+					{/key}
+				</ButtonSimple>
+			</div>
 		{/each}
+		<div class="w-12 relative">
+			<ButtonSimple
+				on:click={() => (selectedNumber = 0)}
+				active={selectedNumber === 0}
+				aria-label="Erase"
+			>
+				<i class="fas fa-eraser"></i>
+			</ButtonSimple>
+		</div>
 	</div>
 </section>
+
+<!-- you won dialog with backdrop -->
+
+{#if showGameOverDialog}
+	<button
+		class="fixed inset-0 z-10 w-full flex items-center justify-center bg-black bg-opacity-50"
+		in:fade={{ duration: 200, easing: quadInOut }}
+		on:click={() => (showGameOverDialog = true)}
+		aria-label="Close dialog"
+	>
+		<div
+			class="bg-stone-100 dark:bg-stone-900 rounded-lg p-8 text-center"
+			in:fly={{ duration: 300, y: 300, easing: cubicOut }}
+		>
+			<h2 class="text-4xl text-main pb-4">You won!</h2>
+			<div class="flex flex-col gap-4">
+				<ButtonSimple on:click={() => newGame()}>New Game</ButtonSimple>
+				<ButtonSimple on:click={() => (showGameOverDialog = false)}>Close</ButtonSimple>
+			</div>
+		</div>
+	</button>
+{/if}
