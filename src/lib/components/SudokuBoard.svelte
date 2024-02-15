@@ -17,7 +17,7 @@
 
 {#if board}
 	<section
-		class="flex flex-col bg-stone-100 border dark:bg-stone-900 items-center justify-center w-full sm:w-fit h-fit rounded-xl p-2 sm:p-4"
+		class="flex flex-col bg-stone-100 shadow-lg border dark:bg-stone-900 items-center justify-center w-full sm:w-fit h-fit rounded-xl p-2 sm:p-4"
 	>
 		{#each board as row, i}
 			<div class="flex w-full">
@@ -29,21 +29,27 @@
 						on:contextmenu={(e) => {
 							e.preventDefault();
 							dispatch('cellClickedAlt', { row: i, col: j });
+							return false;
 						}}
-						on:click={() => dispatch('cellClicked', { row: i, col: j })}
-						class="flex-grow group p-1 h-10 w-12 sm:h-12 flex items-center justify-center
+						on:click={() => { 
+							if (!isFixed && !disabled)
+								dispatch('cellClicked', { row: i, col: j })
+						}}
+						class="flex-grow group p-0.5 sm:p-1 h-10 w-12 sm:h-12 flex items-center justify-center
 						border-stone-400 dark:border-stone-700
 						
 						{[2, 5].includes(i)
 							? 'border-b-4 '
 							: i !== 8
-							  ? 'border-b-2 border-b-stone-300 dark:border-b-stone-800'
+							  ? 'border-b-2 border-b-stone-200 dark:border-b-stone-800'
 							  : ' '}
 						{[2, 5].includes(j)
 							? 'border-r-4 '
 							: j !== 8
-							  ? 'border-r-2 border-r-stone-300 dark:border-r-stone-800'
+							  ? 'border-r-2 border-r-stone-200 dark:border-r-stone-800'
 							  : ' '}
+
+						{isFixed || disabled ? 'pointer-events-none' : ''}
 					"
 					>
 						<div

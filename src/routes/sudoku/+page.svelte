@@ -5,6 +5,7 @@
 	import { fade, fly, scale } from 'svelte/transition';
 	import { cubicOut, quadInOut, quadOut } from 'svelte/easing';
 
+
 	const BLANK_BOARD = [
 		[0, 0, 0, 0, 0, 0, 0, 0, 0],
 		[0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -137,6 +138,8 @@
 	let startedAt = Date.now();
 	let gameDuration: string = '0:00';
 
+	let timer: NodeJS.Timeout;
+
 	onMount(() => newGame());
 
 	function newGame() {
@@ -144,6 +147,7 @@
 		gameOver = false;
 		selectedNumber = 1;
 		startedAt = Date.now();
+		gameDuration = '0:00';
 
 		board = BLANK_BOARD;
 		let tmpBoard = generateSolvedBoard();
@@ -163,6 +167,16 @@
 
 		// trigger reactivity
 		board = board;
+		
+		clearInterval(timer);
+		timer = setInterval(() => {
+		if(isDisabled()) return;
+		let gameDurationSeconds = Math.floor((Date.now() - startedAt) / 1000);
+		gameDuration = `${Math.floor(gameDurationSeconds / 60)}:${(gameDurationSeconds % 60)
+			.toString()
+			.padStart(2, '0')}`;
+	}, 1000);
+
 	}
 
 	function onCellClicked(event: CustomEvent<{ row: number; col: number }>) {
@@ -177,6 +191,7 @@
 	}
 
 	function onCellClickedAlt(event: CustomEvent<{ row: number; col: number }>) {
+		event.preventDefault();
 		if (isDisabled()) return;
 		const { row, col } = event.detail;
 
@@ -190,13 +205,11 @@
 	function writeNumber(row: number, col: number) {
 		if (startingBoard && startingBoard[row][col] !== 0) return;
 
+		annotations[row][col] = Array(10).fill(false);
+
 		let oldValue = board[row][col];
 		// if the cell already contains the selected number, erase it
 		if (oldValue === selectedNumber) {
-			if (selectedNumber === 0) {
-				annotations[row][col] = Array(10).fill(false);
-			}
-
 			board[row][col] = 0;
 		} else {
 			board[row][col] = selectedNumber;
@@ -288,16 +301,13 @@
 <svelte:window on:keydown={onKeyDown} />
 
 <section class="p-4">
-	<div class="flex gap-4">
+	<div class="flex gap-4 w-full items-baseline">
 		<h1 class="text-main text-4xl">Sudoku</h1>
-		<div class="w-40">
-			<ButtonSimple on:click={() => newGame()}>New Game</ButtonSimple>
-		</div>
-		<div class="w-40">
-			<ButtonSimple on:click={() => restartGame()}>Restart</ButtonSimple>
-		</div>
+		
+		<h2 class="flex text-muted text-xl ms-auto">
+			<span class="w-10 text-end">{gameDuration.split(':')[0]}:</span><span class="w-10 text-start">{gameDuration.split(':')[1]}</span>
+		</h2>
 	</div>
-
 	<div class="flex flex-col md:flex-row items-center justify-center gap-12 py-12">
 		<SudokuBoard
 			{board}
@@ -306,7 +316,7 @@
 			{selectedNumber}
 			{startingBoard}
 			{annotations}
-			disabled={isDisabled()}
+			disabled={board === BLANK_BOARD || gameOver}
 		></SudokuBoard>
 
 		<div
@@ -350,6 +360,18 @@
 					<i class="fas fa-eraser"></i>
 				</ButtonSimple>
 			</div>
+			<hr class="w-full hidden md:flex md:mt-4 md:mb-2">
+			<div class="flex w-full flex-wrap justify-center gap-2">
+				<h2 class="hidden md:flex pb-4 text-muted">
+					<span class="w-10 text-end">{gameDuration.split(':')[0]}:</span><span class="w-10 text-start">{gameDuration.split(':')[1]}</span>
+				</h2>
+				<div class="w-40 md:w-full">
+					<ButtonSimple on:click={() => restartGame()} disabled={gameOver}>Restart</ButtonSimple>
+				</div>
+				<div class="w-40 md:w-full whitespace-nowrap">
+					<ButtonSimple on:click={() => newGame()}>New Game</ButtonSimple>
+				</div>
+			</div>
 		</div>
 	</div>
 </section>
@@ -363,6 +385,8 @@
 		on:click={() => (showGameOverDialog = false)}
 		aria-label="Close dialog"
 	>
+		<!-- svelte-ignore a11y-click-events-have-key-events -->
+		<!-- svelte-ignore a11y-no-static-element-interactions -->
 		<div
 			class="bg-stone-100 dark:bg-stone-900 rounded-lg p-8 text-center"
 			in:fly={{ duration: 300, y: 300, easing: cubicOut }}
