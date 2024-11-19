@@ -45,7 +45,7 @@
 						</a>
 						<p class="text-muted ms-auto">{formatDate(project.date)}</p>
 					</span>
-					<p class="pb-3 self-center">{project.description}</p>
+					<p class="pb-3 self-center">{@html project.description}</p>
 					<div class="flex flex-wrap gap-2 content-around">
 						{#each project.tags as tag}
 							<div class="inline">

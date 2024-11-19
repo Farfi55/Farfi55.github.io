@@ -14,6 +14,12 @@ export const technologies: Technology[] = [
 		website: 'https://svelte.dev/'
 	},
 	{
+		name: 'Express',
+		urlSlug: 'express',
+		iconSlug: 'express',
+		website: 'https://expressjs.com/'
+	},
+	{
 		name: 'ASP',
 		urlSlug: 'asp',
 		iconSlug: 'fa-solid fa-code',
@@ -45,6 +51,12 @@ export const technologies: Technology[] = [
 		iconSlug: 'javascript',
 		website: 'https://www.javascript.com/',
 		hide: true
+	},
+	{
+		name: 'Node.js',
+		urlSlug: 'nodejs',
+		iconSlug: 'nodedotjs',
+		website: 'https://nodejs.org/'
 	},
 	{
 		name: 'CSS',
@@ -85,6 +97,18 @@ export const technologies: Technology[] = [
 		urlSlug: 'tailwind',
 		iconSlug: 'tailwindcss',
 		website: 'https://tailwindcss.com/'
+	},
+	{
+		name: 'Sequelize',
+		urlSlug: 'sequelize',
+		iconSlug: 'sequelize',
+		website: 'https://sequelize.org/'
+	},
+	{
+		name: 'DaaS-IoT',
+		urlSlug: 'daas-iot',
+		iconSlug: '/assets/icons/daas-iot.png',
+		website: 'https://daasiot.sebyone.it/'
 	},
 	{
 		name: 'Java',

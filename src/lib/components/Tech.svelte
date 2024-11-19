@@ -15,6 +15,7 @@
 			}
 		}
 
+		
 		src = `https://cdn.simpleicons.org/${technology?.iconSlug}`;
 		if (color) {
 			src += `/${color}`;
@@ -43,6 +44,8 @@
 			{#if technology.iconSlug}
 				{#if technology.iconSlug.startsWith('fa-')}
 					<i class="{technology.iconSlug} text-base w-6 h-6 self-center text-center"></i>
+				{:else if technology.iconSlug.startsWith('/assets/')}
+					<img src={technology.iconSlug} class="w-6 h-6 self-center rounded-sm" />
 				{:else}
 					<img {src} class="w-6 h-6 self-center" />
 				{/if}

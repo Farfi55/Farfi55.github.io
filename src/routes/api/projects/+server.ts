@@ -11,6 +11,16 @@ async function getProjects() {
 	const github = "https://github.com/Farfi55";
 	let projects: Project[] = [
 		{
+			title: "Daas-iot distributed configurable control system",
+			slug: "daas-iot-backend-server",
+			description: "A Backend server for managing IoT devices through a REST API, built with Express and Sequelize. <br>One of my main tasks for the <i>DaaS-IoT</i> project.<br>",
+			date: "2024-09-18",
+			published: true,
+			tags: ["Daas-IoT", "Node.js", "Express", "Sequelize"],
+			repo: "https://github.com/sebyone/daasiot-examples-dccs",
+			coverImage: "/assets/projects/sebyone/daas-iot-example-dccs/cover.png",
+		},
+		{
 			title: "Personal website",
 			slug: "personal-website",
 			description: "This website, built with SvelteKit, Tailwind CSS and more.",
