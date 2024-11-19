@@ -5,6 +5,7 @@
 
 	export let name: string | null = null;
 	export let technology: Technology | null = null;
+	let src:string = '';
 
 	$: {
 		if (name) {
@@ -12,6 +13,11 @@
 			if (color === '' && technology?.color) {
 				color = technology.color;
 			}
+		}
+
+		src = `https://cdn.simpleicons.org/${technology?.iconSlug}`;
+		if (color) {
+			src += `/${color}`;
 		}
 	}
 
@@ -21,6 +27,8 @@
 	if (color === '' && technology?.color) {
 		color = technology.color;
 	}
+
+	
 </script>
 
 {#if technology}
@@ -36,11 +44,7 @@
 				{#if technology.iconSlug.startsWith('fa-')}
 					<i class="{technology.iconSlug} text-base w-6 h-6 self-center text-center"></i>
 				{:else}
-					<img
-						src="https://cdn.simpleicons.org/{technology.iconSlug}/{color}"
-						alt={technology.name}
-						class="w-6 h-6 self-center"
-					/>
+					<img {src} class="w-6 h-6 self-center" />
 				{/if}
 			{/if}
 

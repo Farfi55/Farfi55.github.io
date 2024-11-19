@@ -29,7 +29,8 @@ export const technologies: Technology[] = [
 	{
 		name: 'C#',
 		urlSlug: 'csharp',
-		iconSlug: 'csharp',
+		// removed icon since microsoft legal team wanted it removed from simpleicons
+		iconSlug: '',
 		website: 'https://docs.microsoft.com/en-us/dotnet/csharp/'
 	},
 	{
