@@ -24,6 +24,8 @@
 			{#if index !== data.posts.length - 1}
 				<hr class="my-12 mx-8 border-stone-600 dark:border-stone-700" />
 			{/if}
+		{:else}
+			<p class="text-muted text-2xl">I'm sorry, there aren't any blog posts yet, stay tuned!</p>
 		{/each}
 	</ul>
 </section>
