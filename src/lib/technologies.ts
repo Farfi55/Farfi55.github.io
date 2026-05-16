@@ -5,7 +5,8 @@ export const technologies: Technology[] = [
 		name: 'Unity',
 		urlSlug: 'unity',
 		iconSlug: 'unity',
-		website: 'https://unity.com/'
+		website: 'https://unity.com/',
+
 	},
 	{
 		name: 'Svelte',
@@ -14,15 +15,21 @@ export const technologies: Technology[] = [
 		website: 'https://svelte.dev/'
 	},
 	{
+		name: 'React',
+		urlSlug: 'react',
+		iconSlug: 'react',
+		website: 'https://reactjs.org/'
+	},
+	{
 		name: 'Express',
 		urlSlug: 'express',
 		iconSlug: 'express',
-		website: 'https://expressjs.com/'
+		website: 'https://expressjs.com/',
 	},
 	{
 		name: 'ASP',
 		urlSlug: 'asp',
-		iconSlug: 'fa-solid fa-code',
+		iconSlug: '/assets/icons/clingo.png',
 		title: 'Answer Set Programming',
 		website: 'https://en.wikipedia.org/wiki/Answer_set_programming'
 	},
@@ -36,7 +43,7 @@ export const technologies: Technology[] = [
 		name: 'C#',
 		urlSlug: 'csharp',
 		// removed icon since microsoft legal team wanted it removed from simpleicons
-		iconSlug: '',
+		iconSlug: '/assets/icons/csharp.png',
 		website: 'https://docs.microsoft.com/en-us/dotnet/csharp/'
 	},
 	{
@@ -79,7 +86,6 @@ export const technologies: Technology[] = [
 		color: 'c3002f',
 		website: 'https://angular.io/'
 	},
-
 	{
 		name: 'Spring',
 		urlSlug: 'spring',
@@ -99,6 +105,12 @@ export const technologies: Technology[] = [
 		website: 'https://tailwindcss.com/'
 	},
 	{
+		name: 'MongoDB',
+		urlSlug: 'mongodb',
+		iconSlug: 'mongodb',
+		website: 'https://www.mongodb.com/'
+	},
+	{
 		name: 'Sequelize',
 		urlSlug: 'sequelize',
 		iconSlug: 'sequelize',
@@ -114,7 +126,7 @@ export const technologies: Technology[] = [
 		name: 'Java',
 		urlSlug: 'java',
 		iconSlug: 'fa-brands fa-java',
-		website: 'https://www.java.com/'
+		website: 'https://www.java.com/',
 	},
 	{
 		name: 'Rust',
@@ -151,7 +163,27 @@ export const technologies: Technology[] = [
 		urlSlug: 'web',
 		iconSlug: 'fa-solid fa-globe',
 		hide: true
-	}
+	},
+	{
+		name: 'Ethereum',
+		urlSlug: 'ethereum',
+		iconSlug: 'fa-brands fa-ethereum',
+		website: 'https://ethereum.org/',
+		hide: true
+	},
+	{
+		name: 'Solidity',
+		urlSlug: 'solidity',
+		iconSlug: 'solidity',
+		website: 'https://docs.soliditylang.org/',
+		hide: true
+	},
+	{
+		name: 'CLI',
+		urlSlug: 'cli',
+		iconSlug: 'fa-solid fa-terminal',
+		hide: true
+	},
 ];
 
 const technologiesMap: Map<string, Technology> = new Map();

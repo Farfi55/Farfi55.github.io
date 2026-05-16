@@ -13,6 +13,7 @@ export interface Technology {
 	website?: string;
 	title?: string;
 	color?: string;
+	shadowColor?: string;
 	hide?: boolean;
 }
 
@@ -37,6 +38,7 @@ export type Project = {
 	coverImage?: string;
 	icon?: string;
 	images?: string[];
-	repo: string;
+	repo?: string;
+	itchio?: string;
 };
 

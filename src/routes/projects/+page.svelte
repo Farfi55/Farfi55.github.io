@@ -53,12 +53,24 @@
 							</div>
 						{/each}
 
-						<div class="flex h-fit ms-auto">
-							<Button href={project.repo}>
-								<i class="fab fa-github"></i>
-								View on GitHub
-							</Button>
-						</div>
+						{#if project.itchio}
+							<div class="flex h-fit ms-auto">
+								<Button href={project.itchio} openNewTab={true}>
+									<i class="fab fa-itch-io"></i>
+									Play on Itch.io
+									<i class="fas fa-external-link-alt text-xs align-super"></i>
+								</Button>
+							</div>
+						{/if}
+						{#if project.repo}
+							<div class="flex h-fit ms-auto">
+								<Button href={project.repo} openNewTab={true}>
+									<i class="fab fa-github"></i>
+									View on GitHub
+									<i class="fas fa-external-link-alt text-xs align-super"></i>
+								</Button>
+							</div>
+						{/if}
 					</div>
 				</div>
 			</div>
