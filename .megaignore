@@ -1,0 +1,23 @@
+# Start of generated .megaignore using git2megaignore
++sync:.megaignore
+# .DS_Store
+-anG:.DS_Store
+# node_modules
+-anG:node_modules
+# /build
+-apG:build
+# /.svelte-kit
+-apG:.svelte-kit
+# /package
+-apG:package
+# .env
+-anG:.env
+# .env.*
+-anG:.env.*
+# !.env.example
++anG:.env.example
+# vite.config.js.timestamp-*
+-anG:vite.config.js.timestamp-*
+# vite.config.ts.timestamp-*
+-anG:vite.config.ts.timestamp-*
+# End of generated .megaignore
