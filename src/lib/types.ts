@@ -15,6 +15,7 @@ export interface Technology {
 	color?: string;
 	shadowColor?: string;
 	hide?: boolean;
+	type: string;
 }
 
 export type Post = {

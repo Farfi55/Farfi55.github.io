@@ -14,6 +14,10 @@ export function cn(...inputs: ClassValue[]) {
     return twMerge(clsx(inputs));
 }
 
+export function titleCase(string: string): string {
+    return string[0].toUpperCase() + string.slice(1).toLowerCase();
+}
+
 type FlyAndScaleParams = {
     y?: number;
     x?: number;

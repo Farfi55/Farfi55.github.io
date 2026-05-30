@@ -1,6 +1,7 @@
 <script lang="ts">
-	import { technologies } from '$lib/technologies';
+	import { getTechnologiesByType, tecnologyType } from '$lib/technologies';
 	import type { Step } from '$lib/types';
+	import { titleCase } from '$lib/utils';
 	import Button from './Button.svelte';
 	import Particles from './Particles.svelte';
 	import Steps from './Steps.svelte';
@@ -36,10 +37,12 @@
 				"from the high school problem solving competitions, to building enterprise level applications my role was always to analyze the problem at hand and solving it in a fast and sensible way.<br>Over the years I've gained experience in many different fields of computer science, from web development to game development, from AI to databases. I'm always up for a challenge and the next problem to solve."
 		},
 		{
-			name: 'An Artificial Intelligence Student',
+			name: 'AI and Cyber Security Student',
 			description:
-				"At <i>University of Calabria</i>, I learned to build <b>Artificial Intelligence agents</b> using <b>Answer Set Programming</b> (ASP) from the most brilliant minds in the field. And I've used this knowledge to build a few projects, like " +
-				"<a class='link-main font-semibold' href='/projects#school-timetable'>School Timetable</a> and " +
+				`At <a href="https://www.unical.it/?lang=en" target="_blank" class="link-main poppins italic">
+					University of Calabria</a
+				>, I learned to build <b>Artificial Intelligence agents</b> using <b>Answer Set Programming</b> (ASP) from the most brilliant minds in the field. And I've used this knowledge to build a few projects, like ` +
+				`<a class='link-main font-semibold' href='/projects#school-timetable'>School Timetable</a> and ` +
 				"<a class='link-main font-semibold' href='/projects#cookedup'>CookedUp</a>."
 		}
 	];
@@ -47,40 +50,66 @@
 
 <Particles />
 <main class="flex flex-col flex-1 p-4">
-	<section id="intro-page" class="grid grid-cols-1 lg:grid-cols-3 gap-10 py-8 sm:py-14">
-		<div class="flex flex-col lg:justify-center text-center lg:col-span-2 lg:text-left">
+	<section id="intro-page" class="grid grid-cols-1 lg:grid-cols-3 py-8 sm:py-14">
+		<div class="flex flex-col lg:justify-center text-center lg:col-span-2 lg:text-left amber-">
 			<h1 class="text-3xl sm:text-5xl pb-2">
-				Ciao! I'm <span class="poppins text-main">Farfi</span>!<br />
+				Ciao! I'm <span class="poppins text-main">Alessio Farfaglia</span>!<br />
 			</h1>
-			<h2 class="text-xl sm:text-2xl pb-5">
-				My real name is <span class="poppins text-main">Alessio Farfaglia</span> though.
-			</h2>
 
-			<p class="text-base sm:text-lg md:text-xl pb-8">
-				I'm a <span class="poppins text-main font-semibold">Computer Science</span> student at
+			<p class="text-base sm:text-lg md:text-xl pb-4">
+				I'm a <span class="poppins text-main font-semibold">Software Engineering</span> just
+				graduated from the
 				<a href="https://www.unical.it/?lang=en" target="_blank" class="link-main poppins">
 					University of Calabria</a
 				>
 				🇮🇹.
 				<br />
-				who loves developing
+				that loves making
 				<span class="poppins text-main font-semibold">Games</span>,
 				<span class="poppins text-main font-semibold">Websites</span>
-				and <abbr class="poppins text-main font-semibold" title="Artificial Intelligence">AI</abbr> stuff.
+				and <span class="poppins text-main font-semibold">AI projects</span>.
 			</p>
 
-			<p class="text-base sm:text-lg md:text-xl pb-4">My Favourite tech includes:</p>
-			<ul class="flex flex-wrap justify-center lg:justify-start gap-2 sm:gap-4">
-				{#each technologies as technology (technology.name)}
-					{#if !technology.hide}
-						<Tech {technology} />
-					{/if}
-				{/each}
-			</ul>
+			<div class="flex items-center justify-center lg:hidden">
+				<img
+					src="/assets/graduation_face.png"
+					alt=""
+					class="border-8 rounded-full border-amber-600 bg-amber-600/20 dark:border-amber-700 dark:bg-amber-600/20 max-w-xs"
+				/>
+			</div>
+
+			<p class="text-base sm:text-lg md:text-xl pb-5 pt-4">
+				Here are some of the technologies that I have experience with:
+			</p>
+			{#each Object.keys(tecnologyType) as type}
+				{#if getTechnologiesByType(type).length > 0}
+					<div class="flex gap-4 items-start pb-2">
+						<p class="w-28 shrink-0 text-base poppins text-main font-semibold">
+							{'>'}
+							{titleCase(type)}
+						</p>
+						<ul class="flex flex-1 flex-wrap justify-start gap-x-2 gap-y-1 sm:gap-x-4">
+							{#each getTechnologiesByType(type) as technology (technology.name)}
+								{#if !technology.hide}
+									<Tech {technology} />
+								{/if}
+							{/each}
+						</ul>
+					</div>
+				{/if}
+			{/each}
+		</div>
+		<div
+			class="hidden lg:flex flex-col lg:h-full text-center lg:col-span-1 lg:text-left items-left max-w-[350px] mx-auto"
+		>
+			<img src="/assets/graduation.png" alt="Alessio Farfaglia at graduation" />
+			<hr class="border-amber-600 dark:border-amber-700 border-b-4 w-3/4 rounded-b ml-[14.7%]" />
+
+			<p class="text-sm mt-2 text-muted text-center">That's me at my graduation ceremony 🎓</p>
 		</div>
 	</section>
 
-	<div class="flex justify-center pt-20">
+	<div class="flex justify-center pt-8">
 		<Button href="/#projects">
 			Scroll down <i class="fa-solid fa-arrow-down"></i>
 		</Button>
@@ -130,7 +159,7 @@
 			after:absolute after:bottom-0 after:right-0 after:w-2/3 after:h-1.5 after:bg-amber-600 dark:after:bg-amber-700 after:rounded"
 		>
 			<h3 class="font-semibold text-3xl sm:text-4xl md:text-5xl">
-				A bit <span class="poppins text-main">about</span> me.
+				A bit <span class="poppins text-main">more about</span> me.
 			</h3>
 		</div>
 
