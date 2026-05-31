@@ -16,7 +16,7 @@ async function getProjects() {
 			description: "A web-based game where players manage a fleet of mining ships 🚀 to extract resources from planets 🪐. The Ships are represented as NFTs on the Ethereum blockchain 🪙, allowing players to trade and upgrade their fleet. <br> This project was developed as part of my Master's thesis in Computer Science, with a focus on blockchain gaming and NFT integration.",
 			date: "2025-11-01",
 			published: true,
-			coverImage: "/assets/projects/astro-miner/exp_3.png",
+			coverImage: "/assets/projects/astro-miner/exp_3.webp",
 			images: [
 				"/assets/projects/astro-miner/exp_3.png",
 				"/assets/projects/astro-miner/hangar_4.png",
@@ -35,7 +35,15 @@ async function getProjects() {
 			repo: github + '/circloops',
 			itchio: "https://farfi55.itch.io/circloops",
 			tags: ["Godot", "Game"],
-			coverImage: "/assets/projects/circloops/lvl-11_3.png",
+			coverImage: "/assets/projects/circloops/lvl-11_3.webp",
+			images: [
+				"/assets/projects/circloops/lvl-11_3.png",
+				"/assets/projects/circloops/main-menu.png",
+				"/assets/projects/circloops/lvl-6.png",
+				"/assets/projects/circloops/lvl-11_2.png",
+				"/assets/projects/circloops/lvl-14_2.png",
+				"/assets/projects/circloops/lvl-select.png",
+			],
 			published: true,
 		},
 		{
@@ -45,7 +53,10 @@ async function getProjects() {
 			date: "2025-05-01",
 			published: true,
 			tags: ["React", "Node.js", "Express", "MongoDB", "Web"],
-			coverImage: "/assets/projects/people-hr/login.jpeg",
+			coverImage: "/assets/projects/people-hr/login.webp",
+			images: [
+				"/assets/projects/people-hr/login.png",
+			]
 		},
 		{
 			title: "Daas-iot distributed configurable control system",
@@ -55,7 +66,10 @@ async function getProjects() {
 			published: true,
 			tags: ["Daas-IoT", "Node.js", "Express", "Sequelize"],
 			repo: "https://github.com/sebyone/daasiot-examples-dccs",
-			coverImage: "/assets/projects/sebyone/daas-iot-example-dccs/cover.png",
+			coverImage: "/assets/projects/sebyone/daas-iot-example-dccs/cover.webp",
+			images: [
+				"/assets/projects/sebyone/daas-iot-example-dccs/cover.png",
+			]
 		},
 		{
 			title: "Git2MegaIgnore",
@@ -64,7 +78,10 @@ async function getProjects() {
 			repo: github + "/git2megaignore",
 			published: true,
 			tags: ["Rust", "CLI"],
-			coverImage: "/assets/projects/git2megaignore/cover.png",
+			coverImage: "/assets/projects/git2megaignore/cover.webp",
+			images: [
+				"/assets/projects/git2megaignore/cover.png",
+			],
 			crates: "https://crates.io/crates/git2megaignore",
 			date: "2024-12-29",
 		},
@@ -76,7 +93,10 @@ async function getProjects() {
 			published: true,
 			tags: ["Svelte", "TypeScript", "Tailwind", "Web"],
 			repo: github + '/farfi55.github.io',
-			coverImage: "/assets/projects/personal-website/cover.png",
+			coverImage: "/assets/projects/personal-website/cover.webp",
+			images: [
+				"/assets/projects/personal-website/cover.png",
+			]
 		},
 		{
 			title: "CookedUp",
@@ -85,7 +105,10 @@ async function getProjects() {
 			date: "2023-09-13",
 			tags: ["ASP", "Unity", "C#", "Game"],
 			published: true,
-			coverImage: "/assets/projects/cookedup/cover.png",
+			coverImage: "/assets/projects/cookedup/cover.webp",
+			images: [
+				"/assets/projects/cookedup/cover.png",
+			],
 			icon: "/assets/projects/cookedup/icon.png",
 			repo: github + '/CookedUp'
 		},
@@ -97,10 +120,10 @@ async function getProjects() {
 			repo: github + '/RiskASP',
 			published: true,
 			tags: ["ASP", "Unity", "C#", "Game"],
-			coverImage: '/assets/projects/risk-asp/turn-15-cards.png',
+			coverImage: '/assets/projects/risk-asp/turn-15-cards.webp',
 			images: [
-				"/assets/projects/risk-asp/main-menu.png",
 				"/assets/projects/risk-asp/turn-15-cards.png",
+				"/assets/projects/risk-asp/main-menu.png",
 				"/assets/projects/risk-asp/turn-22-domination.png",
 				"/assets/projects/risk-asp/turn-25-victory-screen.png",
 			],
@@ -113,7 +136,10 @@ async function getProjects() {
 			date: "2023-12-18",
 			published: true,
 			tags: ["ASP", "Svelte", "TypeScript", "Web"],
-			coverImage: "/assets/projects/school-timetable/cover.png",
+			coverImage: "/assets/projects/school-timetable/cover.webp",
+			images: [
+				"/assets/projects/school-timetable/cover.png",
+			],
 			icon: "/assets/projects/school-timetable/icon.png",
 		},
 		{
@@ -124,7 +150,7 @@ async function getProjects() {
 			published: true,
 			tags: ["Angular", "TypeScript", "Web", "Bootstrap"],
 			repo: "https://github.com/BurnTables/BurnTablesApp",
-			coverImage: "/assets/projects/burn-tables/cover.png",
+			coverImage: "/assets/projects/burn-tables/cover.webp",
 			images: [
 				"/assets/projects/burn-tables/cover.png",
 				"/assets/projects/burn-tables/artist.png",
@@ -143,7 +169,7 @@ async function getProjects() {
 			published: true,
 			tags: ["Spring", "Java", "Angular", "TypeScript", "Web", "Bootstrap"],
 			repo: "https://github.com/Enterprise-Intellijence/web-site",
-			coverImage: "/assets/projects/svinted/home.png",
+			coverImage: "/assets/projects/svinted/home.webp",
 			images: [
 				"/assets/projects/svinted/home.png",
 				"/assets/projects/svinted/item-page.png",
@@ -161,7 +187,10 @@ async function getProjects() {
 			published: true,
 			tags: ["C++", "MPI", "Allegro"],
 			repo: github + '/Allegro-MPI-Cave-Generator',
-			coverImage: "/assets/projects/cave-generator/cover.png",
+			coverImage: "/assets/projects/cave-generator/cover.webp",
+			images: [
+				"/assets/projects/cave-generator/cover.png",
+			]
 		},
 		{
 			title: "Focus",
@@ -170,8 +199,14 @@ async function getProjects() {
 			date: "2022-06-20",
 			published: true,
 			tags: ["Java", "JavaFX"],
-			coverImage: "/assets/projects/focus/home.png",
+			coverImage: "/assets/projects/focus/home.webp",
 			repo: github + '/Focus-Project',
+			images: [
+				"/assets/projects/focus/home.png",
+				"/assets/projects/focus/garden.png",
+				"/assets/projects/focus/tutorial.png",
+				"/assets/projects/focus/growing.png",
+			]
 		}
 	];
 

@@ -91,14 +91,16 @@ export const technologies: Technology[] = [
 		urlSlug: 'bash',
 		iconSlug: 'gnubash',
 		website: 'https://www.gnu.org/software/bash/',
-		type: tecnologyType.languages
+		type: tecnologyType.languages,
+		hide: true
 	},
 	{
 		name: 'Perl',
 		urlSlug: 'perl',
 		iconSlug: 'perl',
 		website: 'https://www.perl.org/',
-		type: tecnologyType.languages
+		type: tecnologyType.languages,
+		hide: true
 	},
 	{
 		name: 'Solidity',
