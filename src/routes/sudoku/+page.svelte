@@ -5,7 +5,6 @@
 	import { fade, fly, scale } from 'svelte/transition';
 	import { cubicOut, quadInOut, quadOut } from 'svelte/easing';
 
-
 	const BLANK_BOARD = [
 		[0, 0, 0, 0, 0, 0, 0, 0, 0],
 		[0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -167,16 +166,15 @@
 
 		// trigger reactivity
 		board = board;
-		
+
 		clearInterval(timer);
 		timer = setInterval(() => {
-		if(isDisabled()) return;
-		let gameDurationSeconds = Math.floor((Date.now() - startedAt) / 1000);
-		gameDuration = `${Math.floor(gameDurationSeconds / 60)}:${(gameDurationSeconds % 60)
-			.toString()
-			.padStart(2, '0')}`;
-	}, 1000);
-
+			if (isDisabled()) return;
+			let gameDurationSeconds = Math.floor((Date.now() - startedAt) / 1000);
+			gameDuration = `${Math.floor(gameDurationSeconds / 60)}:${(gameDurationSeconds % 60)
+				.toString()
+				.padStart(2, '0')}`;
+		}, 1000);
 	}
 
 	function onCellClicked(event: CustomEvent<{ row: number; col: number }>) {
@@ -303,10 +301,10 @@
 <section class="p-4">
 	<div class="flex gap-4 w-full items-baseline">
 		<h1 class="text-main text-4xl">Sudoku</h1>
-		
-		<h2 class="flex text-muted text-xl ms-auto">
+
+		<!-- <h2 class="flex text-muted text-xl ms-auto">
 			<span class="w-10 text-end">{gameDuration.split(':')[0]}:</span><span class="w-10 text-start">{gameDuration.split(':')[1]}</span>
-		</h2>
+		</h2> -->
 	</div>
 	<div class="flex flex-col md:flex-row items-center justify-center gap-12 py-12">
 		<SudokuBoard
@@ -360,10 +358,12 @@
 					<i class="fas fa-eraser"></i>
 				</ButtonSimple>
 			</div>
-			<hr class="w-full hidden md:flex md:mt-4 md:mb-2">
+			<hr class="w-full hidden md:flex md:mt-4 md:mb-2" />
 			<div class="flex w-full flex-wrap justify-center gap-2">
 				<h2 class="hidden md:flex pb-4 text-muted">
-					<span class="w-10 text-end">{gameDuration.split(':')[0]}:</span><span class="w-10 text-start">{gameDuration.split(':')[1]}</span>
+					<span class="w-10 text-end">{gameDuration.split(':')[0]}:</span><span
+						class="w-10 text-start">{gameDuration.split(':')[1]}</span
+					>
 				</h2>
 				<div class="w-40 md:w-full">
 					<ButtonSimple on:click={() => restartGame()} disabled={gameOver}>Restart</ButtonSimple>

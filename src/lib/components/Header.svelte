@@ -18,11 +18,11 @@
 			text: 'Projects',
 			icon: 'fa-solid fa-cubes'
 		},
-		{
-			href: '/blog',
-			text: 'Blog',
-			icon: 'fa-solid fa-quote-left'
-		},
+		// {
+		// 	href: '/blog',
+		// 	text: 'Blog',
+		// 	icon: 'fa-solid fa-quote-left'
+		// },
 		{
 			href: '/contact',
 			text: 'Contact',

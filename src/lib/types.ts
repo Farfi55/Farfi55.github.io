@@ -41,5 +41,13 @@ export type Project = {
 	images?: string[];
 	repo?: string;
 	itchio?: string;
+	crates?: string;
 };
 
+export type Course = {
+	name: string;
+	description?: string;
+	grade: string;
+	cfu: number;
+	date: string;
+};

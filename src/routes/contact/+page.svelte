@@ -3,10 +3,22 @@
 
 	let socials = [
 		{
+			name: 'LinkedIn',
+			href: 'https://www.linkedin.com/in/alessio-farfaglia-8780891aa/',
+			icon: 'fa-brands fa-linkedin',
+			color: 'bg-[#007bb5]'
+		},
+		{
 			name: 'GitHub',
 			href: 'https://github.com/Farfi55',
 			icon: 'fa-brands fa-github',
 			color: 'bg-[#171515]'
+		},
+		{
+			name: 'Itch.io',
+			href: 'https://farfi55.itch.io/',
+			icon: 'fa-brands fa-itch-io',
+			color: 'bg-[#fa5c5c]'
 		},
 		{
 			name: 'Twitter',
@@ -22,21 +34,9 @@
 		},
 		{
 			name: 'Spotify',
-			href: 'https://open.spotify.com/user/djalex54',
+			href: 'https://open.spotify.com/user/djalex55',
 			icon: 'fa-brands fa-spotify',
 			color: 'bg-[#0db954]'
-		},
-		{
-			name: 'LinkedIn',
-			href: 'https://www.linkedin.com/in/alessio-farfaglia-8780891aa/',
-			icon: 'fa-brands fa-linkedin',
-			color: 'bg-[#007bb5]'
-		},
-		{
-			name: 'Itch.io',
-			href: 'https://farfi55.itch.io/',
-			icon: 'fa-brands fa-itch-io',
-			color: 'bg-[#fa5c5c]'
 		},
 		{
 			name: 'YouTube',
