@@ -108,6 +108,11 @@ async function getProjects() {
 			coverImage: "/assets/projects/cookedup/cover.webp",
 			images: [
 				"/assets/projects/cookedup/cover.png",
+				"/assets/projects/cookedup/lobby.png",
+				"/assets/projects/cookedup/delivery.png",
+				"/assets/projects/cookedup/gameplay.png",
+				"/assets/projects/cookedup/game_over.png",
+				"/assets/projects/cookedup/bot_logic.drawio.png",
 			],
 			icon: "/assets/projects/cookedup/icon.png",
 			repo: github + '/CookedUp'
